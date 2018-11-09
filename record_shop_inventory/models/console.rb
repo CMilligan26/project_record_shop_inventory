@@ -45,3 +45,4 @@ sale2.save #Tested
 p sale2.record_buying_cost #tested
 p sale.record_selling_price #tested
 p sale.record_markup #tested
+p sale.record_profit

@@ -75,6 +75,11 @@ class Sale
     return sale_markup
   end
 
+  def record_profit
+    overhead = 0.5
+    return (record_markup*overhead).to_i
+  end
+
   def get_record_info
     sql = "SELECT *
     FROM records
