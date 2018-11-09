@@ -70,6 +70,11 @@ class Sale
     return sale_selling_price
   end
 
+  def record_markup
+    sale_markup = (get_record_info.first.markup * @sale_quantity)
+    return sale_markup
+  end
+
   def get_record_info
     sql = "SELECT *
     FROM records
