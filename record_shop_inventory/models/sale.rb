@@ -61,6 +61,16 @@ class Sale
   end
 
   def record_buying_cost
+    sale_buying_cost = (get_record_info.first.provide_buying_cost * @sale_quantity)
+    return sale_buying_cost
+  end
+
+  def record_selling_price
+    sale_selling_price = (get_record_info.first.provide_selling_price * @sale_quantity)
+    return sale_selling_price
+  end
+
+  def get_record_info
     sql = "SELECT *
     FROM records
     INNER JOIN sales
@@ -68,8 +78,7 @@ class Sale
     WHERE records.id = $1"
     values = [@record_id]
     record = Record.map(SqlRunner.run(sql, values))
-    sale_buying_cost = (record.first.provide_buying_cost * @sale_quantity)
-    return sale_buying_cost
+    return record
   end
 
 end
