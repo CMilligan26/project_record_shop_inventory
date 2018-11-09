@@ -1,4 +1,5 @@
 require_relative( '../db/sql_runner' )
+require('pry-byebug')
 
 class Sale
 
@@ -57,6 +58,18 @@ class Sale
 
   def self.map(item_to_map)
     return item_to_map.map{|item| Sale.new(item)}
+  end
+
+  def record_buying_cost
+    sql = "SELECT *
+    FROM records
+    INNER JOIN sales
+    ON records.id = sales.record_id
+    WHERE records.id = $1"
+    values = [@record_id]
+    record = Record.map(SqlRunner.run(sql, values))
+    sale_buying_cost = (record.first.provide_buying_cost * @sale_quantity)
+    return sale_buying_cost
   end
 
 end
