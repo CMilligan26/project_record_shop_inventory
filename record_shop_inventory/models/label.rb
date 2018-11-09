@@ -2,7 +2,7 @@ require_relative( '../db/sql_runner' )
 
 class Label
 
-  attr_reader :name, :location
+  attr_reader :id, :name, :location
 
   def initialize(options)
     @id = options['id'] if options['id']
