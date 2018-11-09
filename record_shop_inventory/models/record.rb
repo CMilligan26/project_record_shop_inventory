@@ -2,7 +2,9 @@ require_relative( '../db/sql_runner' )
 
 class Record
 
-  attr_reader :id, :title, :artist, :genre, :description, :label_id
+  attr_accessor :title
+
+  attr_reader :id, :artist, :genre, :description, :label_id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
@@ -26,6 +28,45 @@ class Record
 
   def provide_selling_price
     return @selling_price
+  end
+
+  def self.all
+    sql = "SELECT * FROM records"
+    Record.map(SqlRunner.run(sql))
+  end
+
+  def record
+    sql = "SELECT * FROM records WHERE id = $1"
+    values = [@id]
+    Record.map(SqlRunner.run(sql, values))
+  end
+
+  def save
+    sql = "INSERT INTO records (title, artist, genre, description, stock_quantity, buying_cost, selling_price, label_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id"
+    values = [@title, @artist, @genre, @description, @stock_quantity, @buying_cost, @selling_price, @label_id]
+    record = SqlRunner.run(sql, values).first;
+    @id = record['id'].to_i
+  end
+
+  def update
+    sql = "UPDATE records SET (title, artist, genre, description, stock_quantity, buying_cost, selling_price, label_id) = ($1, $2, $3, $4, $5, $6, $7, $8) WHERE id = $9"
+    values = [@title, @artist, @genre, @description, @stock_quantity, @buying_cost, @selling_price, @label_id, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def delete
+    sql = "DELETE FROM records WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
+  def self.delete_all
+    sql = "DELETE FROM records"
+    SqlRunner.run(sql)
+  end
+
+  def self.map(item_to_map)
+    return item_to_map.map{|item| Record.new(item)}
   end
 
 end
