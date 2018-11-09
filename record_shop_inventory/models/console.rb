@@ -42,7 +42,8 @@ sale2.save #Tested
 # p Sale.all #Tested
 # p sale.sale #tested
 
-p sale2.record_buying_cost #tested
-p sale.record_selling_price #tested
-p sale.record_markup #tested
-p sale.record_profit
+# p sale2.record_buying_cost #tested
+# p sale.record_selling_price #tested
+# p sale.record_markup #tested
+# p sale.record_profit
+# p Sale.total_record_buying_cost
