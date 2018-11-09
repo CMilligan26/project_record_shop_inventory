@@ -14,7 +14,7 @@ def test_label_exists
 end
 
 def test_label_can_have_id
-  assert_equal('1', @label.id)
+  assert_equal(1, @label.id)
 end
 
 def test_label_has_name

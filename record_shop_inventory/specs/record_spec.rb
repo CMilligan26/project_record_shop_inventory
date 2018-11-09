@@ -1,8 +1,8 @@
 require('minitest/autorun')
 require('minitest/rg')
 
-require_relative('../models/record')
 require_relative('../models/label')
+require_relative('../models/record')
 
 class RecordTest < MiniTest::Test
 
@@ -50,6 +50,5 @@ end
 def test_record_has_label_id
   assert_equal(1, @record.label_id)
 end
-
 
 end
