@@ -112,4 +112,11 @@ class Sale
     return total_markup
   end
 
+  def self.total_profit
+    sales = Sale.all
+    total_profit = 0
+    sales.each{|sale| total_profit += sale.record_profit}
+    return total_profit
+  end
+
 end
