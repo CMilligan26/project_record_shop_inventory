@@ -23,4 +23,33 @@ def test_record_has_title
   assert_equal('Test_Record', @record.title)
 end
 
+def test_record_has_artist
+  assert_equal('Test_Artist', @record.artist)
+end
+
+def test_record_has_genre
+  assert_equal('Test_Genre', @record.genre)
+end
+
+def test_record_has_description
+  assert_equal('Test_Description', @record.description)
+end
+
+def test_record_has_stock_quantity
+  assert_equal(3, @record.provide_stock_quantity)
+end
+
+def test_record_has_buying_cost
+  assert_equal(10, @record.provide_buying_cost)
+end
+
+def test_record_has_selling_price
+  assert_equal(15, @record.provide_selling_price)
+end
+
+def test_record_has_label_id
+  assert_equal(1, @record.label_id)
+end
+
+
 end
