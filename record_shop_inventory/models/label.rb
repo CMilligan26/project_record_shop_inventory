@@ -18,6 +18,12 @@ class Label
     Label.map(SqlRunner.run(sql))
   end
 
+  def label
+    sql = "SELECT * FROM labels WHERE id = $1"
+    values = [@id]
+    Label.map(SqlRunner.run(sql, values))
+  end
+
   def save
     sql = "INSERT INTO labels (name, location) VALUES ($1, $2) RETURNING id"
     values = [@name, @location]
@@ -29,6 +35,17 @@ class Label
     sql = "UPDATE labels SET (name, location) = ($1, $2) WHERE id = $3"
     values = [@name, @location, @id]
     SqlRunner.run(sql, values)
+  end
+
+  def delete
+    sql = "DELETE FROM labels WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
+  def self.delete_all
+    sql = "DELETE FROM labels"
+    SqlRunner.run(sql)
   end
 
   def self.map(item_to_map)
