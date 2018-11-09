@@ -92,11 +92,17 @@ class Sale
   end
 
   def self.total_record_buying_cost
-    binding.pry
     sales = Sale.all
     total_buying_cost = 0
     sales.each{|sale| total_buying_cost += sale.record_buying_cost}
     return total_buying_cost
+  end
+
+  def self.total_record_selling_price
+    sales = Sale.all
+    total_selling_price = 0
+    sales.each{|sale| total_selling_price += sale.record_selling_price}
+    return total_selling_price
   end
 
 end
