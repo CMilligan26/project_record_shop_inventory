@@ -2,6 +2,8 @@ require_relative( '../db/sql_runner' )
 
 class Sale
 
+  attr_accessor :sale_quantity
+
   attr_reader :id, :record_id
 
   def initialize(options)
@@ -16,6 +18,45 @@ class Sale
 
   def provide_sale_quantity
     return @sale_quantity
+  end
+
+  def self.all
+    sql = "SELECT * FROM sales"
+    Sale.map(SqlRunner.run(sql))
+  end
+
+  def sale
+    sql = "SELECT * FROM sales WHERE id = $1"
+    values = [@id]
+    Sale.map(SqlRunner.run(sql, values))
+  end
+
+  def save
+    sql = "INSERT INTO sales (record_id, sale_quantity) VALUES ($1, $2) RETURNING id"
+    values = [@record_id, @sale_quantity]
+    sale = SqlRunner.run(sql, values).first;
+    @id = sale['id'].to_i
+  end
+
+  def update
+    sql = "UPDATE sales SET (record_id, sale_quantity) = ($1, $2) WHERE id = $3"
+    values = [@record_id, @sale_quantity, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def delete
+    sql = "DELETE FROM sales WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
+  def self.delete_all
+    sql = "DELETE FROM sales"
+    SqlRunner.run(sql)
+  end
+
+  def self.map(item_to_map)
+    return item_to_map.map{|item| Sale.new(item)}
   end
 
 end

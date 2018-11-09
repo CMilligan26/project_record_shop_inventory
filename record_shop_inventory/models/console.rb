@@ -1,8 +1,10 @@
 require_relative('label')
 require_relative('record')
+require_relative('sale')
 
-# Label.delete_all #tested
+Label.delete_all #tested
 Record.delete_all #tested
+Sale.delete_all #tested
 
 label = Label.new({'name' => 'Test_Label', 'location' => 'Earth'})
 # #
@@ -25,3 +27,14 @@ record.save #Tested
 # record.delete #Tested
 # p Record.all #Tested
 # p record.record #tested
+
+sale = Sale.new({'record_id' => record.id, 'sale_quantity' => '2'})
+
+sale.save #Tested
+# p Sale.all #Tested
+# sale.sale_quantity = '4' #Tested
+# sale.update #Tested
+# p Sale.all #Tested
+# sale.delete #Tested
+# p Sale.all #Tested
+# p sale.sale #tested
