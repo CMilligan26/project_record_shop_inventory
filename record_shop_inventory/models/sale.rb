@@ -105,4 +105,11 @@ class Sale
     return total_selling_price
   end
 
+  def self.total_record_mark_up
+    sales = Sale.all
+    total_markup = 0
+    sales.each{|sale| total_markup += sale.record_markup}
+    return total_markup
+  end
+
 end
