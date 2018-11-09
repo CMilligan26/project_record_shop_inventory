@@ -69,4 +69,8 @@ class Record
     return item_to_map.map{|item| Record.new(item)}
   end
 
+  def markup
+    return @selling_price - @buying_cost
+  end
+
 end
