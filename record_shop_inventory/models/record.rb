@@ -1,3 +1,5 @@
+require_relative( '../db/sql_runner' )
+
 class Record
 
   def initialize(options)
@@ -11,7 +13,5 @@ class Record
     @selling_price = options['selling_price'].to_i
     @label_id = options['label_id'].to_i
   end
-
-
 
 end
