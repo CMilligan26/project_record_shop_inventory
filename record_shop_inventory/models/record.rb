@@ -2,6 +2,8 @@ require_relative( '../db/sql_runner' )
 
 class Record
 
+  attr_reader :id, :title
+
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @title = options['title']
