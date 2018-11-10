@@ -14,7 +14,20 @@
   <input type="text" id="record_description" name="description" placeholder="e.g. Released 1979"/>
   <br>
   <label for="record_stock_quantity">Stock Quantity:</label>
-  <input type="text" id="record_stock_quantity" name="stock_quantity" min="1" max="1000"/>
-
+  <input type="number" id="record_stock_quantity" name="stock_quantity" min="1" max="1000"/>
+  <br>
+  <label for="record_buying_cost">Unit Price:</label>
+  <input type="number" id="record_buying_cost" name="buying_cost" min="1" max="1000"/>
+  <br>
+  <label for="record_selling_price">Retail Price:</label>
+  <input type="number" id="record_selling_price" name="selling_price" min="1" max="1000"/>
+  <br>
+  <label for="label_name">Label:</label>
+  <select id="label_name" name="label_id">
+    <% for label in @labels %>
+    <option value="<%= label.id %>"><%= label.name %></option>
+    <% end %>
+  </select>
+  <br>
   <button>Save Record</button>
 </form>
