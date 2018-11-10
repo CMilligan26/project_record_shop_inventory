@@ -1,0 +1,20 @@
+<h1> New Record </h1>
+
+<form action="/records/new" method="post">
+  <label for="record_title">Title:</label>
+  <input type="text" id="record_title" name="title" placeholder="e.g. The Wall"/>
+  <br>
+  <label for="record_artist">Artist:</label>
+  <input type="text" id="record_artist" name="artist" placeholder="e.g. Pink Floyd"/>
+  <br>
+  <label for="record_genre">Genre:</label>
+  <input type="text" id="record_genre" name="genre" placeholder="e.g. Rock"/>
+  <br>
+  <label for="record_description">Description:</label>
+  <input type="text" id="record_description" name="description" placeholder="e.g. Released 1979"/>
+  <br>
+  <label for="record_stock_quantity">Stock Quantity:</label>
+  <input type="text" id="record_stock_quantity" name="stock_quantity" min="1" max="1000"/>
+
+  <button>Save Record</button>
+</form>
