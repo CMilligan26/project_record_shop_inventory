@@ -1,0 +1,19 @@
+<h1>Labels</h1>
+
+<a href="/"><span>Back to Inventory</span></a>
+<br>
+<br>
+<table>
+	<thead>
+	<tr>
+		<th scope="col"> Name </th>
+		<th scope="col"> Location </th>
+	</tr>
+	</thead>
+  <%@labels.each do |label|%>
+	<tr>
+		<td><a href="/labels/<%=label.id%>"><span><%=label.name%></span></a></td>
+		<td><%= label.location %></td>
+	</tr>
+  <%end%>
+</table>
