@@ -5,5 +5,5 @@ also_reload( 'models/*' )
 
 get '/' do
   @records = Record.all
-  erb ( :"records/index" )
+  erb ( :"index" )
 end
