@@ -17,5 +17,6 @@ end
 
 get '/records/:id' do
   @record = Record.record(params['id'].to_i)
+  @label = Label.label(@record.first.label_id)
   erb (:"/records/show")
 end

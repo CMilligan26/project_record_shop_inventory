@@ -18,9 +18,9 @@ class Label
     Label.map(SqlRunner.run(sql))
   end
 
-  def label
+  def self.label(id)
     sql = "SELECT * FROM labels WHERE id = $1"
-    values = [@id]
+    values = [id]
     Label.map(SqlRunner.run(sql, values))
   end
 
