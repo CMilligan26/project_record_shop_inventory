@@ -8,3 +8,14 @@ get '/records/new' do
   @labels = Label.all
   erb ( :"/records/new" )
 end
+
+post '/records/new' do
+  record = Record.new(params)
+  record.save
+  redirect to ("/records/"+record.id.to_s)
+end
+
+get '/records/:id' do
+  @record = Record.record(params['id'].to_i)
+  erb (:"/records/show")
+end
