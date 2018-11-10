@@ -1,5 +1,10 @@
+<h1>Inventory</h1>
+
+<a href="/records/new"><span>Add New Record</span></a>
+<a href="/labels/new"><span>Add New Label</span></a>
+<a href="/sales/new"><span>Add New Sale</span></a>
+
 <table>
-	<caption>Inventory</caption>
 	<thead>
 	<tr>
 		<th scope="col">Title</th>
@@ -12,11 +17,11 @@
 	</thead>
   <%@records.each do |record|%>
 	<tr>
-		<td><%=record.title%></td>
+		<td><a href="/records/<%=record.id%>"><span><%=record.title%></span></a></td>
 		<td><%=record.artist%></td>
     <td><%=record.genre%></td>
 		<td><%=record.description%></td>
-    <td><%=record.label.first.name%></td>
+    <td><a href="/records/<%=record.label_id%>"><span><%=record.label.first.name%></span></a></td>
     <td><%=record.provide_stock_quantity%></td>
 	</tr>
   <%end%>

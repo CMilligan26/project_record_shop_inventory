@@ -82,8 +82,18 @@ class Record
   end
 
   def reduce_stock(number)
-    @stock_quantity -= number
-    update
+    if @stock_quantity > number
+      @stock_quantity -= number
+      update
+    else
+      return false
+    end
+  end
+
+  def self.record(id)
+    sql = "SELECT * FROM records WHERE id = $1"
+    values = [id]
+    Record.map(SqlRunner.run(sql, values))
   end
 
 end

@@ -63,9 +63,7 @@ class Sale
   end
 
   def get_record_info
-    sql = "SELECT * FROM records WHERE id = $1"
-    values = [@record_id]
-    record = Record.map(SqlRunner.run(sql, values))
+    record = Record.record(@record_id)
     return record
   end
 
