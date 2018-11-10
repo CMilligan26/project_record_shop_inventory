@@ -1,0 +1,29 @@
+<h1>Sales</h1>
+
+<a href="/"><span>Back to Inventory</span></a>
+<br>
+
+<table>
+	<thead>
+	<tr>
+		<th scope="col">Record Title</th>
+		<th scope="col">Sale Quantity</th>
+    <th scope="col">Cost of Units</th>
+    <th scope="col">Price of Units</th>
+    <th scope="col">Markup of Units</th>
+    <th scope="col">Profit from Sale</th>
+	</tr>
+	</thead>
+  <%@sales.each do |sale|%>
+	<tr>
+		<td><a href="/records/<%=sale.record_id%>"><span><%=sale.get_record_info.first.title%></span></a></td>
+		<td><%=sale.provide_sale_quantity%></td>
+    <td><%=sale.record_buying_cost%></td>
+		<td><%=sale.record_selling_price%></td>
+    <td><%=sale.record_markup%></td>
+    <td><%=sale.record_profit%></td>
+	</tr>
+  <%end%>
+</table>
+<br>
+<br>

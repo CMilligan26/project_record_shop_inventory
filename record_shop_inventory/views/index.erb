@@ -1,5 +1,7 @@
 <h1>Inventory</h1>
 
+<a href="/sales/all"><span>View All Sales</span></a>
+<br>
 <a href="/records/new"><span>Add New Record</span></a>
 <a href="/labels/new"><span>Add New Label</span></a>
 <a href="/sales/new"><span>Add New Sale</span></a>
@@ -21,7 +23,7 @@
 		<td><%=record.artist%></td>
     <td><%=record.genre%></td>
 		<td><%=record.description%></td>
-    <td><a href="/records/<%=record.label_id%>"><span><%=record.label.first.name%></span></a></td>
+    <td><a href="/labels/<%=record.label_id%>"><span><%=record.label.first.name%></span></a></td>
     <td><%=record.provide_stock_quantity%></td>
 	</tr>
   <%end%>
