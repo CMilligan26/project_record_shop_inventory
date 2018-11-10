@@ -53,7 +53,11 @@ class RecordTest < MiniTest::Test
 
   def test_record_markup
     assert_equal(5, @record.markup)
-    p @record.provide_selling_price
+  end
+
+  def test_record_reduce_stock
+    @record.reduce_stock(2)
+    assert_equal(1, @record.provide_stock_quantity)
   end
 
 end

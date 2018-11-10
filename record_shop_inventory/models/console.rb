@@ -30,10 +30,9 @@ record.save #Tested
 
 sale = Sale.new({'record_id' => record.id, 'sale_quantity' => '2'})
 
-sale2 = Sale.new({'record_id' => record.id, 'sale_quantity' => '50'})
-
+# sale2 = Sale.new({'record_id' => record.id, 'sale_quantity' => '50'})
 sale.save #Tested
-sale2.save #Tested
+# sale2.save #Tested
 # p Sale.all #Tested
 # sale.sale_quantity = '4' #Tested
 # sale.update #Tested

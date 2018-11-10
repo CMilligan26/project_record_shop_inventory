@@ -1,4 +1,5 @@
 require_relative( '../db/sql_runner' )
+require_relative('label')
 
 class Record
 
@@ -71,6 +72,16 @@ class Record
 
   def markup
     return @selling_price - @buying_cost
+  end
+
+  def label
+    sql = "SELECT * FROM labels WHERE id = $1"
+    values = [@label_id]
+    Label.map(SqlRunner.run(sql, values))
+  end
+
+  def reduce_stock(number)
+    @stock_quantity -= number
   end
 
 end
