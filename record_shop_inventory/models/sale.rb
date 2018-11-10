@@ -38,6 +38,7 @@ class Sale
     values = [@record_id, @sale_quantity]
     sale = SqlRunner.run(sql, values).first;
     @id = sale['id'].to_i
+    get_record_info.first.reduce_stock(@sale_quantity)
   end
 
   def update
@@ -61,6 +62,13 @@ class Sale
     return item_to_map.map{|item| Sale.new(item)}
   end
 
+  def get_record_info
+    sql = "SELECT * FROM records WHERE id = $1"
+    values = [@record_id]
+    record = Record.map(SqlRunner.run(sql, values))
+    return record
+  end
+
   def record_buying_cost
     sale_buying_cost = (get_record_info.first.provide_buying_cost * @sale_quantity)
     return sale_buying_cost
@@ -79,17 +87,6 @@ class Sale
   def record_profit
     overhead = 0.5
     return (record_markup*overhead).to_i
-  end
-
-  def get_record_info
-    sql = "SELECT *
-    FROM records
-    INNER JOIN sales
-    ON records.id = sales.record_id
-    WHERE records.id = $1"
-    values = [@record_id]
-    record = Record.map(SqlRunner.run(sql, values))
-    return record
   end
 
   def self.total_record_buying_cost

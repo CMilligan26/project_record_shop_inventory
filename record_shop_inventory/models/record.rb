@@ -1,5 +1,6 @@
 require_relative( '../db/sql_runner' )
 require_relative('label')
+require('pry-byebug')
 
 class Record
 
@@ -82,6 +83,7 @@ class Record
 
   def reduce_stock(number)
     @stock_quantity -= number
+    update
   end
 
 end
