@@ -1,0 +1,40 @@
+.new_form {
+  display: block;
+  text-align: center;
+}
+
+.text_input {
+  display:inline-block;
+  vertical-align:top;
+  padding-right: 30px;
+}
+
+.number_input {
+  display:inline-block;
+  vertical-align:top;
+  padding-right: 30px;
+}
+
+.select_input {
+  display:inline-block;
+  vertical-align:top;
+  padding-right: 30px;
+}
+
+.file_input {
+  display:inline-block;
+  vertical-align:top;
+  padding-right: 30px;
+}
+
+.button_input {
+  display: block;
+}
+
+label {
+  float:left;
+}
+
+input {
+  float:right;
+}
