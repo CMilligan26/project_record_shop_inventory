@@ -32,8 +32,12 @@ class Record
     return @selling_price
   end
 
-  def self.all
-    sql = "SELECT * FROM records"
+  def self.all(sort = nil)
+    if sort == nil
+      sql = "SELECT * FROM records"
+    elsif sort == 'title a-z'
+      sql = "SELECT * FROM records ORDER BY UPPER(title) ASC"
+    end
     Record.map(SqlRunner.run(sql))
   end
 
