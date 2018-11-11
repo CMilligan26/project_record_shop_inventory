@@ -15,10 +15,11 @@
 
 <br>
 
-<div>
-<form action="/" method="post"> 
+<div class = "sort_index">
+<form action="/" method="post">
 <label for="sort">Sort by:</label>
-<select id="sort" name="sort">
+<select default = "" id="sort" name="sort">
+	<option style="display:none" disabled selected value> -- Choose Sort Method -- </option>
 	<option value='title a-z'>Title(A-Z)</option>
 </select>
 <button>Sort</button>

@@ -1,33 +1,37 @@
+.all_links {
+  display: block;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
 .sales_all {
-  position: absolute;
-  left: 502px;
-  margin-bottom: 100px;
+  padding-right: 20px;
 }
 
 .labels_all {
-  position: absolute;
-  left: 680px;
-}
-
-.all_links {
-  margin-bottom: 50px;
-}
-
-.record_new {
-  position: absolute;
-  left: 30px;
-}
-
-.label_new {
-  position: absolute;
-  left: 905px;
-}
-
-.sale_new {
-  position: absolute;
-  left: 1098px;
+  padding-left: 20px;
 }
 
 .new_links {
-  margin-bottom: 10px;
+  display: block;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.record_new {
+  padding-right: 20px;
+}
+
+.label_new {
+  padding: 0px 20px 0px 20px;
+}
+
+.sale_new {
+  padding-left: 20px;
+}
+
+.sort_index {
+  display: block;
+  text-align: center;
+  padding-bottom: 10px;
 }
