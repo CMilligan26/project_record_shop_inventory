@@ -9,10 +9,11 @@ td, th {
 }
 
 th {
-  padding: 30px 0px 10px 0px;
-  border-bottom: 3px solid white;
+  padding: 30px 10px 10px 10px;
+  border: 2px solid white;
 }
 
 td {
-  padding: 10px 0px 10px 0px;
+  padding: 30px 10px 10px 10px;
+  border: 2px solid white;
 }
