@@ -15,8 +15,11 @@ end
 
 post '/sales/new' do
   sale = Sale.new(params)
-  sale.save
+  if sale.save == false
+    redirect to ("/sales/failed")
+  else
   redirect to ("/sales/all")
+  end
 end
 
 get '/sales/:id/edit' do
@@ -35,4 +38,8 @@ post '/sales/:id/delete' do
   sale = Sale.sale(params['id'].to_i)
   sale.first.delete
   redirect to "/sales/all"
+end
+
+get '/sales/failed' do
+  erb (:"/sales/failed")
 end

@@ -121,7 +121,7 @@ class Record
   end
 
   def reduce_stock(number)
-    if @stock_quantity > number
+    if @stock_quantity >= number
       @stock_quantity -= number
       update
     else
