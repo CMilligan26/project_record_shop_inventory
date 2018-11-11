@@ -18,7 +18,8 @@ CREATE TABLE records (
   stock_quantity INT8,
   buying_cost INT8,
   selling_price INT8,
-  label_id INT8 REFERENCES labels(id) ON DELETE CASCADE
+  label_id INT8 REFERENCES labels(id) ON DELETE CASCADE,
+  file TEXT
 );
 
 CREATE TABLE sales (

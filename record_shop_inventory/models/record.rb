@@ -6,7 +6,7 @@ class Record
 
   attr_accessor :title
 
-  attr_reader :id, :artist, :genre, :description, :label_id
+  attr_reader :id, :artist, :genre, :description, :label_id, :file
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
@@ -18,6 +18,11 @@ class Record
     @buying_cost = options['buying_cost'].to_i
     @selling_price = options['selling_price'].to_i
     @label_id = options['label_id'].to_i
+    if options['file']
+      @file = options['file']
+    else
+      @file = ""
+    end
   end
 
   def provide_stock_quantity
@@ -78,15 +83,15 @@ class Record
   end
 
   def save
-    sql = "INSERT INTO records (title, artist, genre, description, stock_quantity, buying_cost, selling_price, label_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id"
-    values = [@title, @artist, @genre, @description, @stock_quantity, @buying_cost, @selling_price, @label_id]
+    sql = "INSERT INTO records (title, artist, genre, description, stock_quantity, buying_cost, selling_price, label_id, file) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id"
+    values = [@title, @artist, @genre, @description, @stock_quantity, @buying_cost, @selling_price, @label_id, @file]
     record = SqlRunner.run(sql, values).first;
     @id = record['id'].to_i
   end
 
   def update
-    sql = "UPDATE records SET (title, artist, genre, description, stock_quantity, buying_cost, selling_price, label_id) = ($1, $2, $3, $4, $5, $6, $7, $8) WHERE id = $9"
-    values = [@title, @artist, @genre, @description, @stock_quantity, @buying_cost, @selling_price, @label_id, @id]
+    sql = "UPDATE records SET (title, artist, genre, description, stock_quantity, buying_cost, selling_price, label_id, file) = ($1, $2, $3, $4, $5, $6, $7, $8, $9) WHERE id = $10"
+    values = [@title, @artist, @genre, @description, @stock_quantity, @buying_cost, @selling_price, @label_id, @file, @id]
     SqlRunner.run(sql, values)
   end
 

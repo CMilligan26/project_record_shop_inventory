@@ -52,6 +52,7 @@
 	</thead>
   <%@records.each do |record|%>
 	<tr>
+		<td><img src="<%=record.file%>" alt="Image of Vinyl"/></td>
 		<td><a href="/records/<%=record.id%>"><span><%=record.title%></span></a></td>
 		<td><%=record.artist%></td>
     <td><%=record.genre%></td>
