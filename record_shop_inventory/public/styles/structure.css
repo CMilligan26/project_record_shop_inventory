@@ -22,6 +22,5 @@ a:link, a:visited, a:active {
 }
 /*Change the link on mouse hover*/
 a:hover {
-  opacity: 0.3;
-  color: grey;
+  color: Yellow;
 }

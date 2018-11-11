@@ -1,4 +1,14 @@
 <a href="/"><span>Back to Inventory</span></a>
 <br>
-<h1>Name: <%=@label.first.name%></h1>
-<h2>Location: <%=@label.first.location%></h2>
+<h1><%=@label.first.name%></h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Location</th>
+      </tr>
+    </thead>
+    <tr>
+      <td><%=@label.first.location%></td>
+    </tr>
+  </table>

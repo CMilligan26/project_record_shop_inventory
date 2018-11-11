@@ -1,10 +1,30 @@
 <a href="/"><span>Back to Inventory</span></a>
 <br>
 <h1><%=@record.first.title%></h1>
-<h2>Artist: <%=@record.first.artist%></h2>
-<h2>Genre: <%=@record.first.genre%></h2>
-<h2>Description: <%=@record.first.description%></h2>
-<h2>Stock Quantity: <%=@record.first.provide_stock_quantity%></h2>
-<h2>Unit Cost: <%=@record.first.provide_buying_cost%></h2>
-<h2>Retail Cost: <%=@record.first.provide_selling_price%></h2>
-<h2><a href="/labels/<%=@label.first.id%>"><span><%=@label.first.name%></span></a></h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Album Art</th>
+        <th scope="col">Artist</th>
+        <th scope="col">Genre</th>
+        <th scope="col">Description</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Unit Cost</th>
+        <th scope="col">Retail Cost</th>
+        <th scope="col">Markup</th>
+        <th scope="col">Label</th>
+      </tr>
+    </thead>
+    <tr>
+      <td><img class = "album_art" src="/images/album_art/<%=@record.first.file%>" alt="<%=@record.first.title%>"/></td>
+      <td><%=@record.first.artist%></td>
+      <td><%=@record.first.genre%></td>
+      <td><%=@record.first.description%></td>
+      <td><%=@record.first.provide_stock_quantity%></td>
+      <td><%=@record.first.provide_buying_cost%></td>
+      <td><%=@record.first.provide_selling_price%></td>
+      <td><%=@record.first.markup%></td>
+      <td><a href="/labels/<%=@label.first.id%>"><span><%=@label.first.name%></span></a></td>
+    </tr>
+  </table>
