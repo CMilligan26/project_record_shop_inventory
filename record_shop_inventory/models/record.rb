@@ -4,9 +4,9 @@ require('pry-byebug')
 
 class Record
 
-  attr_accessor :title
+  attr_accessor :title, :file
 
-  attr_reader :id, :artist, :genre, :description, :label_id, :file
+  attr_reader :id, :artist, :genre, :description, :label_id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']

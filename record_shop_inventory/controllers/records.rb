@@ -20,3 +20,20 @@ get '/records/:id' do
   @label = Label.label(@record.first.label_id)
   erb (:"/records/show")
 end
+
+get '/records/:id/edit' do
+  @record = Record.record(params['id'].to_i)
+  @labels = Label.all
+  @label = Label.label(@record.first.label_id)
+  erb (:"/records/edit")
+end
+
+post '/records/:id' do
+  old_record = Record.record(params['id'].to_i)
+  record = Record.new(params)
+  if record.file = ""
+    record.file = old_record.first.file
+  end
+  record.update
+  redirect to ("/records/"+params['id'].to_s)
+end

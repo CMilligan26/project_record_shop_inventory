@@ -1,0 +1,54 @@
+<a href="/"><span>Back to Inventory</span></a>
+<br>
+
+<h1> Edit Record </h1>
+
+<form class = "new_form" action="/records/<%=@record.first.id%>" method="post">
+
+  <div class = "text_input">
+    <label class = "form_label" for="record_title">Title:</label>
+    <input class = "form_input" type="text" id="record_title" name="title" value="<%= @record.first.title %>"/>
+    <br>
+    <label class = "form_label" for="record_artist">Artist:</label>
+    <input class = "form_input" type="text" id="record_artist" name="artist" value="<%= @record.first.artist %>"/>
+    <br>
+    <label class = "form_label" for="record_genre">Genre:</label>
+    <input class = "form_input" type="text" id="record_genre" name="genre" value="<%= @record.first.genre %>"/>
+    <br>
+    <label class = "form_label" for="record_description">Description:</label>
+    <input class = "form_input" type="text" id="record_description" name="description" value="<%= @record.first.description %>"/>
+    <br>
+  </div>
+
+  <div class = "number_input">
+    <label class = "form_label" for="record_stock_quantity">Stock Quantity:</label>
+    <input class = "form_input" type="number" id="record_stock_quantity" name="stock_quantity" min="1" max="1000" value="<%= @record.first.provide_stock_quantity %>"/>
+    <br>
+    <label class = "form_label" for="record_buying_cost">Unit Price:</label>
+    <input class = "form_input" type="number" id="record_buying_cost" name="buying_cost" min="1" max="1000" value="<%= @record.first.provide_buying_cost %>"/>
+    <br>
+    <label class = "form_label" for="record_selling_price">Retail Price:</label>
+    <input class = "form_input" type="number" id="record_selling_price" name="selling_price" min="1" max="1000" value="<%= @record.first.provide_selling_price %>"/>
+    <br>
+  </div>
+
+  <div class = "select_input">
+    <label class = "form_label" for="label_name">Label:</label>
+    <select class = "form_select" id="label_name" name="label_id">
+      <% for label in @labels %>
+      <option value="<%= label.id %>" <%= 'selected' if @label.first.id == label.id %>><%= label.name %></option>
+      <% end %>
+    </select>
+    <br>
+  </div>
+
+  <div class = "file_input">
+  <label class = "form_label" for="artwork">Upload Album Artwork:</label>
+  <input class = "form_input" type="file" id="artwork" name="file" accept="image/png, image/jpeg"/>
+  <br>
+  </div>
+
+  <div class = "button_input">
+  <button>Save Record</button>
+  </div>
+</form>

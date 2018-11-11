@@ -30,15 +30,6 @@
   text-align: center;
 }
 
-.show_button_collection {
-  display: block;
-}
-
-.show_button {
-  display: block;
-  position: relative;
-}
-
 .form_label {
   float: left;
   padding-bottom: 20px;
@@ -55,4 +46,21 @@
   float: right;
   margin-bottom: 20px;
   margin-right: 20px;
+}
+
+.show_button_collection {
+  display: block;
+  text-align: center;
+}
+
+.edit_button {
+  display: inline-block;
+  vertical-align: top;
+  padding-right: 10px;
+}
+
+.delete_button {
+  display: inline-block;
+  vertical-align: top;
+  padding-left: 10px;
 }
