@@ -1,0 +1,33 @@
+.sales_all {
+  position: absolute;
+  left: 502px;
+  margin-bottom: 100px;
+}
+
+.labels_all {
+  position: absolute;
+  left: 680px;
+}
+
+.all_links {
+  margin-bottom: 50px;
+}
+
+.record_new {
+  position: absolute;
+  left: 30px;
+}
+
+.label_new {
+  position: absolute;
+  left: 905px;
+}
+
+.sale_new {
+  position: absolute;
+  left: 1098px;
+}
+
+.new_links {
+  margin-bottom: 10px;
+}
