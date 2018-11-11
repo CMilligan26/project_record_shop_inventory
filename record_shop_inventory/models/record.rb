@@ -37,6 +37,36 @@ class Record
       sql = "SELECT * FROM records"
     elsif sort == 'title a-z'
       sql = "SELECT * FROM records ORDER BY UPPER(title) ASC"
+    elsif sort == 'title z-a'
+      sql = "SELECT * FROM records ORDER BY UPPER(title) DESC"
+    elsif sort == 'artist a-z'
+      sql = "SELECT * FROM records ORDER BY UPPER(artist) ASC"
+    elsif sort == 'artist z-a'
+      sql = "SELECT * FROM records ORDER BY UPPER(artist) DESC"
+    elsif sort == 'genre a-z'
+      sql = "SELECT * FROM records ORDER BY UPPER(genre) ASC"
+    elsif sort == 'genre z-a'
+      sql = "SELECT * FROM records ORDER BY UPPER(genre) DESC"
+    elsif sort == 'description a-z'
+      sql = "SELECT * FROM records ORDER BY UPPER(description) ASC"
+    elsif sort == 'description z-a'
+      sql = "SELECT * FROM records ORDER BY UPPER(description) DESC"
+    elsif sort == 'label a-z'
+      sql = "SELECT records.*
+      FROM records
+      INNER JOIN labels
+      ON records.label_id = labels.id
+      ORDER BY UPPER(labels.name) ASC"
+    elsif sort == 'label z-a'
+      sql = "SELECT records.*
+      FROM records
+      INNER JOIN labels
+      ON records.label_id = labels.id
+      ORDER BY UPPER(labels.name) DESC"
+    elsif sort == 'stock_quantity lowest-highest'
+      sql = "SELECT * FROM records ORDER BY stock_quantity ASC"
+    elsif sort == 'stock_quantity highest-lowest'
+      sql = "SELECT * FROM records ORDER BY stock_quantity DESC"
     end
     Record.map(SqlRunner.run(sql))
   end
