@@ -1,40 +1,49 @@
 .new_form {
   display: block;
+  padding-top: 10px;
   text-align: center;
 }
 
 .text_input {
-  display:inline-block;
-  vertical-align:top;
-  padding-right: 30px;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .number_input {
-  display:inline-block;
-  vertical-align:top;
-  padding-right: 30px;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .select_input {
-  display:inline-block;
-  vertical-align:top;
-  padding-right: 30px;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .file_input {
-  display:inline-block;
-  vertical-align:top;
-  padding-right: 30px;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .button_input {
   display: block;
+  padding-top: 20px;
+  text-align: center;
 }
 
 label {
-  float:left;
+  float: left;
+  padding-bottom: 20px;
+  padding-right: 20px;
 }
 
 input {
-  float:right;
+  float: right;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+select {
+  float: right;
+  margin-bottom: 20px;
+  margin-right: 20px;
 }

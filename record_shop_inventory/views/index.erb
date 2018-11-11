@@ -1,65 +1,69 @@
 <h1>Inventory</h1>
 
 <div class = "all_links">
-<a class = "sales_all" href="/sales/all"><span>View All Sales</span></a>
-<a class = "labels_all" href="/labels/all"><span>View All Labels</span></a>
+	<a class = "sales_all" href="/sales/all"><span>View All Sales</span></a>
+	<a class = "labels_all" href="/labels/all"><span>View All Labels</span></a>
 </div>
 
 <br>
 
 <div class = "new_links">
-<a class = "record_new" href="/records/new"><span>Add New Record</span></a>
-<a class = "label_new" href="/labels/new"><span>Add New Label</span></a>
-<a class = "sale_new" href="/sales/new"><span>Add New Sale</span></a>
+	<a class = "record_new" href="/records/new"><span>Add New Record</span></a>
+	<a class = "label_new" href="/labels/new"><span>Add New Label</span></a>
+	<a class = "sale_new" href="/sales/new"><span>Add New Sale</span></a>
 </div>
 
 <br>
 
 <div class = "sort_index">
-<form action="/" method="post">
-<label for="sort">Sort by:</label>
-<select default = "" id="sort" name="sort">
-	<option style="display:none" disabled selected value> -- Choose Sort Method -- </option>
-	<option value='title a-z'>Title(A-Z)</option>
-	<option value='title z-a'>Title(Z-A)</option>
-	<option value='artist a-z'>Artist(A-Z)</option>
-	<option value='artist z-a'>Artist(Z-A)</option>
-	<option value='genre a-z'>Genre(A-Z)</option>
-	<option value='genre z-a'>Genre(Z-A)</option>
-	<option value='description a-z'>Description(A-Z)</option>
-	<option value='description z-a'>Description(Z-A)</option>
-	<option value='label a-z'>Label(A-Z)</option>
-	<option value='label z-a'>Label(Z-A)</option>
-	<option value='stock_quantity lowest-highest'>Stock Quantity(Lowest-Highest)</option>
-	<option value='stock_quantity highest-lowest'>Stock Quantity(Highest-Lowest)</option>
-</select>
-<button>Sort</button>
-</form>
+	<form action="/" method="post">
+
+		<div class = "select_input">
+			<label for="sort">Sort by:</label>
+			<select default = "" id="sort" name="sort">
+				<option style="display:none" disabled selected value> -- Choose Sort Method -- </option>
+				<option value='title a-z'>Title(A-Z)</option>
+				<option value='title z-a'>Title(Z-A)</option>
+				<option value='artist a-z'>Artist(A-Z)</option>
+				<option value='artist z-a'>Artist(Z-A)</option>
+				<option value='genre a-z'>Genre(A-Z)</option>
+				<option value='genre z-a'>Genre(Z-A)</option>
+				<option value='description a-z'>Description(A-Z)</option>
+				<option value='description z-a'>Description(Z-A)</option>
+				<option value='label a-z'>Label(A-Z)</option>
+				<option value='label z-a'>Label(Z-A)</option>
+				<option value='stock_quantity lowest-highest'>Stock Quantity(Lowest-Highest)</option>
+				<option value='stock_quantity highest-lowest'>Stock Quantity(Highest-Lowest)</option>
+			</select>
+		</div>
+
+		<button>Sort</button>
+	</form>
 </div>
 
 <br>
 
 <table>
 	<thead>
-	<tr>
-		<th scope="col">Album Artwork</th>
-		<th scope="col">Title</th>
-		<th scope="col">Artist</th>
-    <th scope="col">Genre</th>
-    <th scope="col">Description</th>
-    <th scope="col">Label</th>
-    <th scope="col">Stock</th>
-	</tr>
+		<tr>
+			<th scope="col">Album Artwork</th>
+			<th scope="col">Title</th>
+			<th scope="col">Artist</th>
+			<th scope="col">Genre</th>
+			<th scope="col">Description</th>
+			<th scope="col">Label</th>
+			<th scope="col">Stock</th>
+		</tr>
 	</thead>
-  <%@records.each do |record|%>
+	<%@records.each do |record|%>
 	<tr>
 		<td><img class = "album_art" src="/images/album_art/<%=record.file%>" alt="Image of Vinyl"/></td>
 		<td><a href="/records/<%=record.id%>"><span><%=record.title%></span></a></td>
 		<td><%=record.artist%></td>
-    <td><%=record.genre%></td>
+		<td><%=record.genre%></td>
 		<td><%=record.description%></td>
-    <td><a href="/labels/<%=record.label_id%>"><span><%=record.label.first.name%></span></a></td>
-    <td><%=record.provide_stock_quantity%></td>
+		<td><a href="/labels/<%=record.label_id%>"><span><%=record.label.first.name%></span></a></td>
+		<td><%=record.provide_stock_quantity%></td>
 	</tr>
-  <%end%>
+	<%end%>
 </table>

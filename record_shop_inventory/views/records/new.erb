@@ -6,34 +6,34 @@
 <form class = "new_form" action="/records/new" method="post">
 
   <div class = "text_input">
-    <label class = "input_label" for="record_title">Title:</label>
+    <label for="record_title">Title:</label>
     <input type="text" id="record_title" name="title" placeholder="e.g. The Wall"/>
     <br>
-    <label class = "input_label" for="record_artist">Artist:</label>
+    <label for="record_artist">Artist:</label>
     <input type="text" id="record_artist" name="artist" placeholder="e.g. Pink Floyd"/>
     <br>
-    <label class = "input_label" for="record_genre">Genre:</label>
+    <label for="record_genre">Genre:</label>
     <input type="text" id="record_genre" name="genre" placeholder="e.g. Rock"/>
     <br>
-    <label class = "input_label" for="record_description">Description:</label>
+    <label for="record_description">Description:</label>
     <input type="text" id="record_description" name="description" placeholder="e.g. Released 1979"/>
     <br>
   </div>
 
   <div class = "number_input">
-    <label class = "input_label" for="record_stock_quantity">Stock Quantity:</label>
+    <label for="record_stock_quantity">Stock Quantity:</label>
     <input type="number" id="record_stock_quantity" name="stock_quantity" min="1" max="1000"/>
     <br>
-    <label class = "input_label" for="record_buying_cost">Unit Price:</label>
+    <label for="record_buying_cost">Unit Price:</label>
     <input type="number" id="record_buying_cost" name="buying_cost" min="1" max="1000"/>
     <br>
-    <label class = "input_label" for="record_selling_price">Retail Price:</label>
+    <label for="record_selling_price">Retail Price:</label>
     <input type="number" id="record_selling_price" name="selling_price" min="1" max="1000"/>
     <br>
   </div>
 
   <div class = "select_input">
-    <label class = "input_label" for="label_name">Label:</label>
+    <label for="label_name">Label:</label>
     <select id="label_name" name="label_id">
       <% for label in @labels %>
       <option value="<%= label.id %>"><%= label.name %></option>
@@ -43,7 +43,7 @@
   </div>
 
   <div class = "file_input">
-  <label class = "input_label" for="artwork">Upload Album Artwork:</label>
+  <label for="artwork">Upload Album Artwork:</label>
   <input type="file"
   id="artwork" name="file"
   accept="image/png, image/jpeg">
