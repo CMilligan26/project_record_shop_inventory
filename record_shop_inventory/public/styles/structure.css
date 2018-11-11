@@ -1,0 +1,23 @@
+body {
+  background: black;
+  background-size: 100%;
+  color: white;
+  padding: 0px;
+  margin: 0px;
+}
+
+a {
+  color: grey;
+}
+
+img {
+  width: 100vw;
+}
+
+h1 {
+  text-align: center;
+}
+
+th {
+  margin-right: 200px
+}
