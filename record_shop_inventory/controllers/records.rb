@@ -37,3 +37,9 @@ post '/records/:id' do
   record.update
   redirect to ("/records/"+params['id'].to_s)
 end
+
+post '/records/:id/delete' do
+  record = Record.record(params['id'].to_i)
+  record.first.delete
+  redirect to "/"
+end
