@@ -6,22 +6,22 @@
 <form class = "new_form" action="/sales/new" method="post">
 
   <div class = "select_input">
-  <label class = "form_label" for="record_title">Record:</label>
-  <select class = "form_select" id="record_title" name="record_id">
-    <% for record in @records %>
-    <option value="<%= record.id %>"><%= record.title %></option>
-    <% end %>
-  </select>
-  <br>
+    <label class = "form_label" for="record_title">Record:</label>
+    <select class = "form_select" id="record_title" name="record_id">
+      <% for record in @records %>
+      <option value="<%= record.id %>"><%= record.title %></option>
+      <% end %>
+    </select>
+    <br>
   </div>
 
   <div class = "number_input">
-  <label class = "form_label" for="sale_quantity">Sale Quantity:</label>
-  <input class = "form_input" type="number" id="sale_quantity" name="sale_quantity" min="1" max="1000"/>
-  <br>
+    <label class = "form_label" for="sale_quantity">Sale Quantity:</label>
+    <input class = "form_input" type="number" id="sale_quantity" name="sale_quantity" min="1" max="1000"/>
+    <br>
   </div>
 
   <div class = "button_input">
-  <button>Save Sale</button>
+    <button>Save Sale</button>
   </div>
 </form>

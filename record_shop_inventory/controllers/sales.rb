@@ -18,7 +18,7 @@ post '/sales/new' do
   if sale.save == false
     redirect to ("/sales/failed")
   else
-  redirect to ("/sales/all")
+    redirect to ("/sales/all")
   end
 end
 

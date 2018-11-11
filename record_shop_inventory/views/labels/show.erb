@@ -2,18 +2,18 @@
 <br>
 <h1><%=@label.first.name%></h1>
 
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Location</th>
-      </tr>
-    </thead>
+<table>
+  <thead>
     <tr>
-      <td><%=@label.first.location%></td>
+      <th scope="col">Location</th>
     </tr>
-  </table>
+  </thead>
+  <tr>
+    <td><%=@label.first.location%></td>
+  </tr>
+</table>
 
-  <div class="show_button_collection">
+<div class="show_button_collection">
   <form class="edit_button" action="/labels/<%= @label.first.id %>/edit" method="get">
     <input  type="submit" value="EDIT">
   </form>
