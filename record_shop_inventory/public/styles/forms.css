@@ -39,19 +39,19 @@
   position: relative;
 }
 
-label {
+.form_label {
   float: left;
   padding-bottom: 20px;
   padding-right: 20px;
 }
 
-input {
+.form_input {
   float: right;
   margin-bottom: 20px;
   margin-right: 20px;
 }
 
-select {
+.form_select {
   float: right;
   margin-bottom: 20px;
   margin-right: 20px;
