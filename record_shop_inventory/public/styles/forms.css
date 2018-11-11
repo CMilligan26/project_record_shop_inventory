@@ -30,6 +30,15 @@
   text-align: center;
 }
 
+.show_button_collection {
+  display: block;
+}
+
+.show_button {
+  display: block;
+  position: relative;
+}
+
 label {
   float: left;
   padding-bottom: 20px;

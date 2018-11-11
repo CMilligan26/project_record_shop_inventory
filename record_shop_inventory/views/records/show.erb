@@ -28,3 +28,12 @@
       <td><a href="/labels/<%=@label.first.id%>"><span><%=@label.first.name%></span></a></td>
     </tr>
   </table>
+
+<div class="show_button_collection">
+<form class="show_button" action="/records/<%= @record.first.id %>/edit" method="get">
+  <input  type="submit" value="EDIT">
+</form>
+<form class="show_button" action="/records/<%= @record.first.id %>/delete" method="post">
+  <input type="submit" value="DELETE">
+</form>
+<div>
