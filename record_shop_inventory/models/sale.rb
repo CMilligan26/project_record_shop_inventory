@@ -27,7 +27,7 @@ class Sale
     Sale.map(SqlRunner.run(sql))
   end
 
-  def sale(id)
+  def self.sale(id)
     sql = "SELECT * FROM sales WHERE id = $1"
     values = [id]
     Sale.map(SqlRunner.run(sql, values))

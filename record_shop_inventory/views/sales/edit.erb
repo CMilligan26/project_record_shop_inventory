@@ -1,0 +1,27 @@
+<a href="/"><span>Back to Inventory</span></a>
+<br>
+
+<h1> Edit Sale </h1>
+
+<form class = "new_form" action="/sales/<%=@sale.first.id%>" method="post">
+
+  <div class = "select_input">
+  <label class = "form_label" for="record_title">Record:</label>
+  <select class = "form_select" id="record_title" name="record_id">
+    <% for record in @records %>
+    <option value="<%= record.id %>" <%= 'selected' if @sale.first.record_id == record.id %>><%= record.title %></option>
+    <% end %>
+  </select>
+  <br>
+  </div>
+
+  <div class = "number_input">
+  <label class = "form_label" for="sale_quantity">Sale Quantity:</label>
+  <input class = "form_input" type="number" id="sale_quantity" name="sale_quantity" min="1" max="1000" value="<%= @sale.first.id %>"/>
+  <br>
+  </div>
+
+  <div class = "button_input">
+  <button>Save Sale</button>
+  </div>
+</form>

@@ -23,6 +23,12 @@
 		<td><%= sale.record_selling_price %></td>
     <td><%= sale.record_markup %></td>
     <td><%= sale.record_profit %></td>
+		<td><form class="edit_button" action="/sales/<%= sale.id %>/edit" method="get">
+		  <input  type="submit" value="EDIT">
+		</form></td>
+		<td><form class="delete_button" action="/sales/<%= sale.id %>/delete" method="post">
+		  <input type="submit" value="DELETE">
+		</form></td>
 	</tr>
   <%end%>
 </table>

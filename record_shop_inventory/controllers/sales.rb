@@ -18,3 +18,21 @@ post '/sales/new' do
   sale.save
   redirect to ("/sales/all")
 end
+
+get '/sales/:id/edit' do
+  @records = Record.all
+  @sale = Sale.sale(params['id'].to_i)
+  erb (:"/sales/edit")
+end
+
+post '/sales/:id' do
+  sale = Sale.new(params)
+  sale.update
+  redirect to ('/sales/all')
+end
+
+post '/sales/:id/delete' do
+  sale = Sale.sale(params['id'].to_i)
+  sale.first.delete
+  redirect to "/sales/all"
+end
