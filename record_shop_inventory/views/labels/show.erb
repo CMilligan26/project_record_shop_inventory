@@ -12,3 +12,12 @@
       <td><%=@label.first.location%></td>
     </tr>
   </table>
+
+  <div class="show_button_collection">
+  <form class="edit_button" action="/labels/<%= @label.first.id %>/edit" method="get">
+    <input  type="submit" value="EDIT">
+  </form>
+  <form class="delete_button" action="/labels/<%= @label.first.id %>/delete" method="post">
+    <input type="submit" value="DELETE">
+  </form>
+  <div>

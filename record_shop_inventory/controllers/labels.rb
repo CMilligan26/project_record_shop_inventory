@@ -22,3 +22,20 @@ get '/labels/:id' do
   @label = Label.label(params['id'].to_i)
   erb (:"/labels/show")
 end
+
+get '/labels/:id/edit' do
+  @label = Label.label(params['id'].to_i)
+  erb (:"/labels/edit")
+end
+
+post '/labels/:id' do
+  label = Label.new(params)
+  label.update
+  redirect to ("/labels/"+params['id'].to_s)
+end
+
+post '/labels/:id/delete' do
+  label = Label.label(params['id'].to_i)
+  label.first.delete
+  redirect to "/"
+end
