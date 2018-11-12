@@ -27,8 +27,8 @@ class GenreCategorization
   end
 
   def update
-    sql = "UPDATE genre_categorizations SET (record_id, genre_id)) = ($1, $2) WHERE id = $3"
-    values = [@record_id, @genre_id]
+    sql = "UPDATE genre_categorizations SET (record_id, genre_id) = ($1, $2) WHERE id = $3"
+    values = [@record_id, @genre_id, @id]
     SqlRunner.run(sql, values)
   end
 

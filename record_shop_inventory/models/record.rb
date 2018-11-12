@@ -6,13 +6,12 @@ class Record
 
   attr_accessor :title, :file
 
-  attr_reader :id, :artist_id, :genre, :release_date, :label_id, :sold, :running_stock_total
+  attr_reader :id, :artist_id, :release_date, :label_id, :sold, :running_stock_total
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @title = options['title']
     @artist_id = options['artist_id']
-    @genre = options['genre']
     @release_date = options['release_date']
     @stock_quantity = options['stock_quantity'].to_i
     @buying_cost = options['buying_cost'].to_i
@@ -66,10 +65,22 @@ class Record
       INNER JOIN artists
       ON records.artist_id = artists.id
       ORDER BY UPPER(artists.artist_name) DESC"
-    # elsif sort == 'genre a-z'
-    #   sql = "SELECT * FROM records ORDER BY UPPER(genre) ASC"
-    # elsif sort == 'genre z-a'
-    #   sql = "SELECT * FROM records ORDER BY UPPER(genre) DESC"
+    elsif sort == 'genre a-z'
+      sql = "SELECT records.*
+      FROM records
+      INNER JOIN genre_categorizations
+      ON records.id = genre_categorizations.record_id
+      INNER JOIN genres
+      ON genre_categorizations.genre_id = genres.id
+      ORDER BY UPPER(genres.genre_name) ASC"
+    elsif sort == 'genre z-a'
+      sql = "SELECT records.*
+      FROM records
+      INNER JOIN genre_categorizations
+      ON records.id = genre_categorizations.record_id
+      INNER JOIN genres
+      ON genre_categorizations.genre_id = genres.id
+      ORDER BY UPPER(genres.genre_name) DESC"
     elsif sort == 'description a-z'
       sql = "SELECT * FROM records ORDER BY UPPER(description) ASC"
     elsif sort == 'description z-a'
@@ -101,8 +112,8 @@ class Record
   end
 
   def save
-    sql = "INSERT INTO records (title, artist_id, genre, release_date, running_stock_total, stock_quantity, total_sold, buying_cost, selling_price, label_id, file) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING id"
-    values = [@title, @artist_id, @genre, @release_date, @running_stock_total, @stock_quantity, @total_sold, @buying_cost, @selling_price, @label_id, @file]
+    sql = "INSERT INTO records (title, artist_id, release_date, running_stock_total, stock_quantity, total_sold, buying_cost, selling_price, label_id, file) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id"
+    values = [@title, @artist_id, @release_date, @running_stock_total, @stock_quantity, @total_sold, @buying_cost, @selling_price, @label_id, @file]
     record = SqlRunner.run(sql, values).first;
     @id = record['id'].to_i
   end
@@ -112,8 +123,8 @@ class Record
     if @stock_quantity == 0 and record.first.provide_stock_quantity != 1
       @stock_quantity = record.first.provide_stock_quantity
     end
-    sql = "UPDATE records SET (title, artist, genre, description, stock_quantity, buying_cost, selling_price, label_id, file) = ($1, $2, $3, $4, $5, $6, $7, $8, $9) WHERE id = $10"
-    values = [@title, @artist, @genre, @description, @stock_quantity, @buying_cost, @selling_price, @label_id, @file, @id]
+    sql = "UPDATE records SET (title, artist_id, release_date, stock_quantity, buying_cost, selling_price, label_id, file) = ($1, $2, $3, $4, $5, $6, $7, $8) WHERE id = $9"
+    values = [@title, @artist_id, @release_date, @stock_quantity, @buying_cost, @selling_price, @label_id, @file, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -163,18 +174,18 @@ class Record
     Record.map(SqlRunner.run(sql, values))
   end
 
-def update_total_sold
-  sql = "UPDATE records SET total_sold = $1 WHERE id = $2"
-  values = [@total_sold, @id]
-  SqlRunner.run(sql, values)
-end
+  def update_total_sold
+    sql = "UPDATE records SET total_sold = $1 WHERE id = $2"
+    values = [@total_sold, @id]
+    SqlRunner.run(sql, values)
+  end
 
-def update_running_stock_total(number)
-  @running_stock_total = record.first.running_stock_total + number
-  sql = "UPDATE records SET running_stock_total = $1 WHERE id = $2"
-  values = [@running_stock_total, @id]
-  SqlRunner.run(sql, values)
-  calculate_stock
-end
+  def update_running_stock_total(number)
+    @running_stock_total = record.first.running_stock_total + number
+    sql = "UPDATE records SET running_stock_total = $1 WHERE id = $2"
+    values = [@running_stock_total, @id]
+    SqlRunner.run(sql, values)
+    calculate_stock
+  end
 
 end

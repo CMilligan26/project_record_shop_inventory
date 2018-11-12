@@ -1,6 +1,8 @@
 class Genre
 
-  attr_reader :id, :genre_name
+  attr_accessor :genre_name
+
+  attr_reader :id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
@@ -26,8 +28,8 @@ class Genre
   end
 
   def update
-    sql = "UPDATE genres SET (genre_name) = ($1) WHERE id = $2"
-    values = [@genre_name]
+    sql = "UPDATE genres SET genre_name = $1 WHERE id = $2"
+    values = [@genre_name, @id]
     SqlRunner.run(sql, values)
   end
 
