@@ -60,6 +60,7 @@ class Sale
     sql = "DELETE FROM sales WHERE id = $1"
     values = [@id]
     SqlRunner.run(sql, values)
+    get_record_info.first.calculate_stock
   end
 
   def self.delete_all
