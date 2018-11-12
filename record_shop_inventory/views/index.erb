@@ -63,7 +63,13 @@
 		<td><%=record.genre%></td>
 		<td><%=record.description%></td>
 		<td><a href="/labels/<%=record.label_id%>"><span><%=record.label.first.name%></span></a></td>
+		<%if record.provide_stock_quantity < 5%>
+		<td class = "bad_stock"><%=record.provide_stock_quantity%></td>
+		<%elsif record.provide_stock_quantity >= 10%>
+		<td class = "good_stock"><%=record.provide_stock_quantity%></td>
+		<%else%>
 		<td><%=record.provide_stock_quantity%></td>
+		<%end%>
 	</tr>
 	<%end%>
 </table>

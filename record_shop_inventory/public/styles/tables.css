@@ -16,3 +16,11 @@ td {
   padding: 5px 10px 0px 10px;
   border: 2px solid white;
 }
+
+.bad_stock {
+  border: 2px solid red;
+}
+
+.good_stock {
+  border: 2px solid green;
+}
