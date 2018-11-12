@@ -36,4 +36,7 @@
   <form class="delete_button" action="/records/<%= @record.first.id %>/delete" method="post">
     <input type="submit" value="DELETE">
   </form>
+  <form class="add_stock" action="/records/<%= @record.first.id %>/add_stock" method="get">
+    <input type="submit" value="ADD STOCK">
+  </form>
   <div>

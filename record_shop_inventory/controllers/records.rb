@@ -43,3 +43,14 @@ post '/records/:id/delete' do
   record.first.delete
   redirect to "/"
 end
+
+get '/records/:id/add_stock' do
+  @record = Record.record(params['id'].to_i)
+  erb (:"/records/add_stock")
+end
+
+post '/records/:id/add_stock' do
+  record = Record.record(params['id'].to_i)
+  record.first.update_running_stock_total(params['add_stock'].to_i)
+  redirect to ("/records/"+params['id'].to_s)
+end

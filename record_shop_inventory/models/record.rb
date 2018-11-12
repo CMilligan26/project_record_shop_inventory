@@ -6,7 +6,7 @@ class Record
 
   attr_accessor :title, :file
 
-  attr_reader :id, :artist, :genre, :description, :label_id, :sold
+  attr_reader :id, :artist, :genre, :description, :label_id, :sold, :running_stock_total
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
@@ -100,6 +100,10 @@ class Record
   end
 
   def update
+    #for update when a new record is created, needs to keep the same stock since it will be 0 as the user cannot provide a value for it
+    if @stock_quantity == 0
+      @stock_quantity = record.first.provide_stock_quantity
+    end
     sql = "UPDATE records SET (title, artist, genre, description, stock_quantity, buying_cost, selling_price, label_id, file) = ($1, $2, $3, $4, $5, $6, $7, $8, $9) WHERE id = $10"
     values = [@title, @artist, @genre, @description, @stock_quantity, @buying_cost, @selling_price, @label_id, @file, @id]
     SqlRunner.run(sql, values)
@@ -131,7 +135,6 @@ class Record
   end
 
   def calculate_stock
-    binding.pry
     sql = "SELECT sales.sale_quantity
     FROM sales
     INNER JOIN records
@@ -142,7 +145,7 @@ class Record
     @total_sold = 0;
     sales.each{|sale| @total_sold += sale["sale_quantity"].to_i}
     @stock_quantity = @running_stock_total - @total_sold
-    update_stock_total_and_sold
+    update_total_sold
     update
   end
 
@@ -152,10 +155,18 @@ class Record
     Record.map(SqlRunner.run(sql, values))
   end
 
+def update_total_sold
+  sql = "UPDATE records SET total_sold = $1 WHERE id = $2"
+  values = [@total_sold, @id]
+  SqlRunner.run(sql, values)
 end
 
-def update_stock_total_and_sold
-  sql = "UPDATE records SET (running_stock_total, total_sold) = ($1, $2) WHERE id = $3"
-  values = [@running_stock_total, @total_sold, @id]
+def update_running_stock_total(number)
+  @running_stock_total = record.first.running_stock_total + number
+  sql = "UPDATE records SET running_stock_total = $1 WHERE id = $2"
+  values = [@running_stock_total, @id]
   SqlRunner.run(sql, values)
+  calculate_stock
+end
+
 end
