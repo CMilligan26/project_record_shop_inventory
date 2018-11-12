@@ -8,7 +8,7 @@
       <th scope="col">Album Art</th>
       <th scope="col">Artist</th>
       <th scope="col">Genre</th>
-      <th scope="col">Description</th>
+      <th scope="col">Release Date</th>
       <th scope="col">Stock</th>
       <th scope="col">Unit Cost</th>
       <th scope="col">Retail Cost</th>
@@ -18,9 +18,12 @@
   </thead>
   <tr>
     <td><img class = "album_art" src="/images/album_art/<%=@record.first.file%>" alt="<%=@record.first.title%>"/></td>
-    <td><%=@record.first.artist%></td>
-    <td><%=@record.first.genre%></td>
-    <td><%=@record.first.description%></td>
+    <td><a href="/artists/<%=@record.first.artist.first.id%>"><span><%=@record.first.artist.first.artist_name%></span></a></td>
+		<td><%@record.first.get_all_genres.each do |genre|%>
+		<a href="/genres/<%=genre.id%>"><span><%=genre.genre_name%></span></a>
+		<%end%>
+		</td>
+    <td><%=@record.first.release_date%></td>
     <td><%=@record.first.provide_stock_quantity%></td>
     <td><%=@record.first.provide_buying_cost%></td>
     <td><%=@record.first.provide_selling_price%></td>

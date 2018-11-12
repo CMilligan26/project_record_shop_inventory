@@ -29,14 +29,27 @@
     <label class = "form_label" for="record_title">Title:</label>
     <input class = "form_input" type="text" id="record_title" name="title" placeholder="e.g. The Wall"/>
     <br>
-    <label class = "form_label" for="record_artist">Artist:</label>
-    <input class = "form_input" type="text" id="record_artist" name="artist" placeholder="e.g. Pink Floyd"/>
+    <div class = "select_input">
+      <label class = "form_label" for="artist">Artist:</label>
+      <select class = "form_select" id="artist" name="artist_id">
+        <% for artist in @artists %>
+        <option value="<%= artist.id %>"><%= artist.artist_name %></option>
+        <% end %>
+      </select>
+      <br>
+    </div>
+    <div class = "select_input">
+      <label class = "form_label" for="genres">Genre(s):</label>
+      <select class = "form_select" id="genres" name="genres" multiple>
+        <% for genre in @all_genres %>
+        <option value="<%= genre.id %>"><%= genre.genre_name %></option>
+        <% end %>
+      </select>
+      <br>
+    </div>
     <br>
-    <label class = "form_label" for="record_genre">Genre:</label>
-    <input class = "form_input" type="text" id="record_genre" name="genre" placeholder="e.g. Rock"/>
-    <br>
-    <label class = "form_label" for="record_description">Description:</label>
-    <input class = "form_input" type="text" id="record_description" name="description" placeholder="e.g. Released 1979"/>
+    <label class = "form_label" for="record_release_date">Release Date:</label>
+    <input class = "form_input" type="text" id="record_release_date" name="release_date" placeholder="e.g. Released 30 November 1979"/>
     <br>
   </div>
 

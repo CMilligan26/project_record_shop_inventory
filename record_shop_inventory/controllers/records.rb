@@ -7,6 +7,8 @@ also_reload( '../models/*' )
 get '/records/new' do
   @records = Record.all
   @labels = Label.all
+  @artists = Artist.all
+  @all_genres = Genre.all
   erb ( :"/records/new" )
 end
 
