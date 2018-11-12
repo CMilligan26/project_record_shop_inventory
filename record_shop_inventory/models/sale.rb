@@ -39,7 +39,7 @@ class Sale
       values = [@record_id, @sale_quantity]
       sale = SqlRunner.run(sql, values).first;
       @id = sale['id'].to_i
-      get_record_info.first.reduce_stock
+      get_record_info.first.calculate_stock
     else
       return false
     end
@@ -50,7 +50,7 @@ class Sale
       sql = "UPDATE sales SET (record_id, sale_quantity) = ($1, $2) WHERE id = $3"
       values = [@record_id, @sale_quantity, @id]
       SqlRunner.run(sql, values)
-      get_record_info.first.reduce_stock
+      get_record_info.first.calculate_stock
     else
       return false
     end
