@@ -1,5 +1,6 @@
 require( 'sinatra' )
 require( 'sinatra/contrib/all' )
+require('pry-byebug')
 require_relative( '../models/record.rb' )
 also_reload( '../models/*' )
 
@@ -10,9 +11,18 @@ get '/records/new' do
 end
 
 post '/records/new' do
+  if params['label_id'] == 'add_new'
+    new_label = Label.new(params)
+    new_label.save
+    params['label_id'] = new_label.id
+    record = Record.new(params)
+    record.save
+    redirect to ("/records/"+record.id.to_s)
+  else
   record = Record.new(params)
   record.save
   redirect to ("/records/"+record.id.to_s)
+  end
 end
 
 get '/records/:id' do

@@ -5,6 +5,26 @@
 
 <form class = "new_form" action="/records/new" method="post">
 
+  <div class = "select_input">
+    <label class = "form_label" for="label_name">Label:</label>
+    <select class = "form_select" id="label_name" name="label_id">
+      <option value="<%= 'add_new' %>">Add New Label</option>
+      <% for label in @labels %>
+      <option value="<%= label.id %>"><%= label.name %></option>
+      <% end %>
+    </select>
+    <br>
+  </div>
+
+  <div class = "text_input">
+    <label class = "form_label" for="label_name">Label Name:</label>
+    <input class = "form_input" type="text" id="label_name" name="name" placeholder="Only for new label"/>
+    <br>
+    <label class = "form_label" for="location">Label Location:</label>
+    <input class = "form_input" type="text" id="location" name="location" placeholder="Only for new label"/>
+    <br>
+  </div>
+
   <div class = "text_input">
     <label class = "form_label" for="record_title">Title:</label>
     <input class = "form_input" type="text" id="record_title" name="title" placeholder="e.g. The Wall"/>
@@ -29,16 +49,6 @@
     <br>
     <label class = "form_label" for="record_selling_price">Retail Price:</label>
     <input class = "form_input" type="number" id="record_selling_price" name="selling_price" min="1" max="1000"/>
-    <br>
-  </div>
-
-  <div class = "select_input">
-    <label class = "form_label" for="label_name">Label:</label>
-    <select class = "form_select" id="label_name" name="label_id">
-      <% for label in @labels %>
-      <option value="<%= label.id %>"><%= label.name %></option>
-      <% end %>
-    </select>
     <br>
   </div>
 
