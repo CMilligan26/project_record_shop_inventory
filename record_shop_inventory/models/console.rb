@@ -50,4 +50,14 @@ sale.save #Tested
 # p Sale.total_record_mark_up #tested
 # p Sale.total_profit #tested
 
-# record.reduce_stock #tested
+
+artist = Artist.new({'artist_name' => 'Test_Artist'})
+# #
+artist.save #Tested
+p Artist.all #Tested
+artist.artist_name = "New Name" #Tested
+artist.update #Tested
+p Artist.all #Tested
+artist.delete #Tested
+p Artist.all #Tested
+p artist.label #tested

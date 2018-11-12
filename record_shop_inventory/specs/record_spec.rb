@@ -55,9 +55,4 @@ class RecordTest < MiniTest::Test
     assert_equal(5, @record.markup)
   end
 
-  def test_record_reduce_stock
-    @record.reduce_stock(2)
-    assert_equal(1, @record.provide_stock_quantity)
-  end
-
 end

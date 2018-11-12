@@ -6,14 +6,14 @@ class Record
 
   attr_accessor :title, :file
 
-  attr_reader :id, :artist, :genre, :description, :label_id, :sold, :running_stock_total
+  attr_reader :id, :artist_id, :genre, :release_date, :label_id, :sold, :running_stock_total
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @title = options['title']
-    @artist = options['artist']
+    @artist_id = options['artist_id']
     @genre = options['genre']
-    @description = options['description']
+    @release_date = options['release_date']
     @stock_quantity = options['stock_quantity'].to_i
     @buying_cost = options['buying_cost'].to_i
     @selling_price = options['selling_price'].to_i
@@ -55,13 +55,21 @@ class Record
     elsif sort == 'title z-a'
       sql = "SELECT * FROM records ORDER BY UPPER(title) DESC"
     elsif sort == 'artist a-z'
-      sql = "SELECT * FROM records ORDER BY UPPER(artist) ASC"
+      sql = "SELECT records.*
+      FROM records
+      INNER JOIN artists
+      ON records.artist_id = artists.id
+      ORDER BY UPPER(artists.artist_name) ASC"
     elsif sort == 'artist z-a'
-      sql = "SELECT * FROM records ORDER BY UPPER(artist) DESC"
-    elsif sort == 'genre a-z'
-      sql = "SELECT * FROM records ORDER BY UPPER(genre) ASC"
-    elsif sort == 'genre z-a'
-      sql = "SELECT * FROM records ORDER BY UPPER(genre) DESC"
+      sql = "SELECT records.*
+      FROM records
+      INNER JOIN artists
+      ON records.artist_id = artists.id
+      ORDER BY UPPER(artists.artist_name) DESC"
+    # elsif sort == 'genre a-z'
+    #   sql = "SELECT * FROM records ORDER BY UPPER(genre) ASC"
+    # elsif sort == 'genre z-a'
+    #   sql = "SELECT * FROM records ORDER BY UPPER(genre) DESC"
     elsif sort == 'description a-z'
       sql = "SELECT * FROM records ORDER BY UPPER(description) ASC"
     elsif sort == 'description z-a'
@@ -93,8 +101,8 @@ class Record
   end
 
   def save
-    sql = "INSERT INTO records (title, artist, genre, description, running_stock_total, stock_quantity, total_sold, buying_cost, selling_price, label_id, file) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING id"
-    values = [@title, @artist, @genre, @description, @running_stock_total, @stock_quantity, @total_sold, @buying_cost, @selling_price, @label_id, @file]
+    sql = "INSERT INTO records (title, artist_id, genre, release_date, running_stock_total, stock_quantity, total_sold, buying_cost, selling_price, label_id, file) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING id"
+    values = [@title, @artist_id, @genre, @release_date, @running_stock_total, @stock_quantity, @total_sold, @buying_cost, @selling_price, @label_id, @file]
     record = SqlRunner.run(sql, values).first;
     @id = record['id'].to_i
   end

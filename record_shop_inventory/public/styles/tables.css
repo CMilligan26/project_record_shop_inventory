@@ -9,12 +9,12 @@ td, th {
 
 th {
   padding: 10px 10px 30px 10px;
-  border: 2px solid white;
+  border: 2px solid black;
 }
 
 td {
   padding: 5px 10px 0px 10px;
-  border: 2px solid white;
+  border: 2px solid black;
 }
 
 .bad_stock {
