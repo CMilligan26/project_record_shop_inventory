@@ -46,14 +46,14 @@ record5.save
 
 #SALES
 
-sale1 = Sale.new({'record_id' => record1.id, 'sale_quantity' => '3'})
-sale2 = Sale.new({'record_id' => record2.id, 'sale_quantity' => '1'})
-sale3 = Sale.new({'record_id' => record3.id, 'sale_quantity' => '2'})
-sale4 = Sale.new({'record_id' => record4.id, 'sale_quantity' => '1'})
-sale5 = Sale.new({'record_id' => record5.id, 'sale_quantity' => '2'})
-
-sale1.save
-sale2.save
-sale3.save
-sale4.save
-sale5.save
+# sale1 = Sale.new({'record_id' => record1.id, 'sale_quantity' => '3'})
+# sale2 = Sale.new({'record_id' => record2.id, 'sale_quantity' => '1'})
+# sale3 = Sale.new({'record_id' => record3.id, 'sale_quantity' => '2'})
+# sale4 = Sale.new({'record_id' => record4.id, 'sale_quantity' => '1'})
+# sale5 = Sale.new({'record_id' => record5.id, 'sale_quantity' => '2'})
+#
+# sale1.save
+# sale2.save
+# sale3.save
+# sale4.save
+# sale5.save

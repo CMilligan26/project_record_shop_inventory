@@ -30,8 +30,11 @@ end
 
 post '/sales/:id' do
   sale = Sale.new(params)
-  sale.update
-  redirect to ('/sales/all')
+  if sale.update == false
+    redirect to ("/sales/failed")
+  else
+    redirect to ("/sales/all")
+  end
 end
 
 post '/sales/:id/delete' do

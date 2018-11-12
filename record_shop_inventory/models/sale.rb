@@ -34,17 +34,26 @@ class Sale
   end
 
   def save
-    sql = "INSERT INTO sales (record_id, sale_quantity) VALUES ($1, $2) RETURNING id"
-    values = [@record_id, @sale_quantity]
-    sale = SqlRunner.run(sql, values).first;
-    @id = sale['id'].to_i
-    get_record_info.first.reduce_stock(@sale_quantity)
+    if get_record_info.first.provide_stock_quantity >= @sale_quantity
+      sql = "INSERT INTO sales (record_id, sale_quantity) VALUES ($1, $2) RETURNING id"
+      values = [@record_id, @sale_quantity]
+      sale = SqlRunner.run(sql, values).first;
+      @id = sale['id'].to_i
+      get_record_info.first.reduce_stock
+    else
+      return false
+    end
   end
 
   def update
-    sql = "UPDATE sales SET (record_id, sale_quantity) = ($1, $2) WHERE id = $3"
-    values = [@record_id, @sale_quantity, @id]
-    SqlRunner.run(sql, values)
+    if get_record_info.first.provide_stock_quantity >= @sale_quantity
+      sql = "UPDATE sales SET (record_id, sale_quantity) = ($1, $2) WHERE id = $3"
+      values = [@record_id, @sale_quantity, @id]
+      SqlRunner.run(sql, values)
+      get_record_info.first.reduce_stock
+    else
+      return false
+    end
   end
 
   def delete

@@ -15,6 +15,7 @@ CREATE TABLE records (
   artist TEXT,
   genre TEXT,
   description TEXT,
+  starting_stock INT8,
   stock_quantity INT8,
   buying_cost INT8,
   selling_price INT8,

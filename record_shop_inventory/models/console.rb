@@ -49,3 +49,5 @@ sale.save #Tested
 # p Sale.total_record_selling_price #tested
 # p Sale.total_record_mark_up #tested
 # p Sale.total_profit #tested
+
+# record.reduce_stock #tested

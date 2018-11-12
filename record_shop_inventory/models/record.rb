@@ -18,6 +18,11 @@ class Record
     @buying_cost = options['buying_cost'].to_i
     @selling_price = options['selling_price'].to_i
     @label_id = options['label_id'].to_i
+    if options['starting_stock']
+      @starting_stock = options['starting_stock'].to_i
+    else
+      @starting_stock = @stock_quantity.clone
+    end
     if options['file']
       @file = options['file']
     else
@@ -83,15 +88,18 @@ class Record
   end
 
   def save
-    sql = "INSERT INTO records (title, artist, genre, description, stock_quantity, buying_cost, selling_price, label_id, file) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id"
-    values = [@title, @artist, @genre, @description, @stock_quantity, @buying_cost, @selling_price, @label_id, @file]
+    sql = "INSERT INTO records (title, artist, genre, description, starting_stock, stock_quantity, buying_cost, selling_price, label_id, file) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id"
+    values = [@title, @artist, @genre, @description, @starting_stock, @stock_quantity, @buying_cost, @selling_price, @label_id, @file]
     record = SqlRunner.run(sql, values).first;
     @id = record['id'].to_i
   end
 
   def update
-    sql = "UPDATE records SET (title, artist, genre, description, stock_quantity, buying_cost, selling_price, label_id, file) = ($1, $2, $3, $4, $5, $6, $7, $8, $9) WHERE id = $10"
-    values = [@title, @artist, @genre, @description, @stock_quantity, @buying_cost, @selling_price, @label_id, @file, @id]
+    if @starting_stock < @stock_quantity
+      @starting_stock = @stock_quantity.clone
+    end
+    sql = "UPDATE records SET (title, artist, genre, description, starting_stock, stock_quantity, buying_cost, selling_price, label_id, file) = ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) WHERE id = $11"
+    values = [@title, @artist, @genre, @description, @starting_stock, @stock_quantity, @buying_cost, @selling_price, @label_id, @file, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -120,13 +128,17 @@ class Record
     Label.map(SqlRunner.run(sql, values))
   end
 
-  def reduce_stock(number)
-    if @stock_quantity >= number
-      @stock_quantity -= number
-      update
-    else
-      return false
-    end
+  def reduce_stock
+    sql = "SELECT sales.sale_quantity
+    FROM sales
+    INNER JOIN records
+    ON sales.record_id = records.id
+    WHERE records.id = $1"
+    values = [@id]
+    sales = SqlRunner.run(sql, values).map{|sale_quantity| sale_quantity}
+    @stock_quantity = @starting_stock.clone
+    sales.each{|sale| @stock_quantity -= sale["sale_quantity"].to_i}
+    update
   end
 
   def self.record(id)
