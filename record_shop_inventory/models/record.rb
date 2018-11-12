@@ -188,4 +188,22 @@ class Record
     calculate_stock
   end
 
+  def get_all_genres
+    sql = "SELECT genres.*
+    FROM genres
+    INNER JOIN genre_categorizations
+    ON genres.id = genre_categorizations.genre_id
+    INNER JOIN records
+    ON genre_categorizations.record_id = records.id
+    WHERE records.id = $1"
+    values = [@id]
+    Genre.map(SqlRunner.run(sql, values))
+  end
+
+  def artist
+    sql = "SELECT * FROM labels WHERE id = $1"
+    values = [@artist_id]
+    Artist.map(SqlRunner.run(sql, values))
+  end
+
 end
