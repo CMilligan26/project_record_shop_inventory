@@ -68,7 +68,7 @@
 		<%elsif record.provide_stock_quantity >= 10%>
 		<td class = "good_stock"><%=record.provide_stock_quantity%></td>
 		<%else%>
-		<td><%=record.provide_stock_quantity%></td>
+		<td class = "ok_stock"><%=record.provide_stock_quantity%></td>
 		<%end%>
 		<td>
 		<form class="add_stock" action="/records/<%= record.id %>/add_stock" method="get">

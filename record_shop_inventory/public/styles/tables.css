@@ -19,8 +19,15 @@ td {
 
 .bad_stock {
   border: 2px solid red;
+  background-color: red;
+}
+
+.ok_stock {
+  border: 2px solid orange;
+  background-color: orange;
 }
 
 .good_stock {
   border: 2px solid green;
+  background-color: green;
 }
