@@ -101,7 +101,7 @@ class Record
 
   def update
     #for update when a new record is created, needs to keep the same stock since it will be 0 as the user cannot provide a value for it
-    if @stock_quantity == 0
+    if @stock_quantity == 0 and record.first.provide_stock_quantity != 1
       @stock_quantity = record.first.provide_stock_quantity
     end
     sql = "UPDATE records SET (title, artist, genre, description, stock_quantity, buying_cost, selling_price, label_id, file) = ($1, $2, $3, $4, $5, $6, $7, $8, $9) WHERE id = $10"

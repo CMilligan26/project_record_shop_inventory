@@ -1,5 +1,6 @@
 require( 'sinatra' )
 require( 'sinatra/contrib/all' )
+require( 'pry-byebug')
 require_relative( '../models/sale.rb' )
 also_reload( '../models/*' )
 
@@ -45,4 +46,18 @@ end
 
 get '/sales/failed' do
   erb (:"/sales/failed")
+end
+
+get '/sales/:record_id/new' do
+  @record = Record.record(params['record_id'].to_i)
+  erb ( :"/sales/record_new" )
+end
+
+post '/sales/:record_id/new' do
+  sale = Sale.new(params)
+  if sale.save == false
+    redirect to ("/sales/failed")
+  else
+    redirect to ("/sales/all")
+  end
 end
