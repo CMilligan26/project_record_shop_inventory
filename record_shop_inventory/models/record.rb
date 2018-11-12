@@ -1,5 +1,7 @@
 require_relative( '../db/sql_runner' )
 require_relative('label')
+require_relative('artist')
+require_relative('genre')
 require('pry-byebug')
 
 class Record
@@ -65,22 +67,6 @@ class Record
       INNER JOIN artists
       ON records.artist_id = artists.id
       ORDER BY UPPER(artists.artist_name) DESC"
-    elsif sort == 'genre a-z'
-      sql = "SELECT records.*
-      FROM records
-      INNER JOIN genre_categorizations
-      ON records.id = genre_categorizations.record_id
-      INNER JOIN genres
-      ON genre_categorizations.genre_id = genres.id
-      ORDER BY UPPER(genres.genre_name) ASC"
-    elsif sort == 'genre z-a'
-      sql = "SELECT records.*
-      FROM records
-      INNER JOIN genre_categorizations
-      ON records.id = genre_categorizations.record_id
-      INNER JOIN genres
-      ON genre_categorizations.genre_id = genres.id
-      ORDER BY UPPER(genres.genre_name) DESC"
     elsif sort == 'description a-z'
       sql = "SELECT * FROM records ORDER BY UPPER(description) ASC"
     elsif sort == 'description z-a'
@@ -201,7 +187,7 @@ class Record
   end
 
   def artist
-    sql = "SELECT * FROM labels WHERE id = $1"
+    sql = "SELECT * FROM artists WHERE id = $1"
     values = [@artist_id]
     Artist.map(SqlRunner.run(sql, values))
   end

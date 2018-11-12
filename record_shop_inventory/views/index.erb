@@ -26,8 +26,6 @@
 				<option value='title z-a'>Title(Z-A)</option>
 				<option value='artist a-z'>Artist(A-Z)</option>
 				<option value='artist z-a'>Artist(Z-A)</option>
-				<option value='genre a-z'>Genre(A-Z)</option>
-				<option value='genre z-a'>Genre(Z-A)</option>
 				<option value='description a-z'>Description(A-Z)</option>
 				<option value='description z-a'>Description(Z-A)</option>
 				<option value='label a-z'>Label(A-Z)</option>
@@ -59,9 +57,11 @@
 	<tr>
 		<td><a href="/records/<%=record.id%>"><img class = "album_art" src="/images/album_art/<%=record.file%>" alt="Image of Vinyl"/></a></td>
 		<td><a href="/records/<%=record.id%>"><span><%=record.title%></span></a></td>
-		<td><%=record.artist%></td>
-		<td><%=record.genre%></td>
-		<td><%=record.description%></td>
+		<td><%=record.artist.first.artist_name%></td>
+		<%record.get_all_genres.each do |genre|%>
+		<td><%=genre.genre_name%></td>
+		<%end%>
+		<td><%=record.release_date%></td>
 		<td><a href="/labels/<%=record.label_id%>"><span><%=record.label.first.name%></span></a></td>
 		<%if record.provide_stock_quantity < 5%>
 		<td class = "bad_stock"><%=record.provide_stock_quantity%></td>
