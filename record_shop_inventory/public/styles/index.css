@@ -2,6 +2,7 @@
   display: block;
   text-align: center;
   padding-bottom: 10px;
+  padding-top: 20px;
 }
 
 .sales_all {
@@ -33,7 +34,7 @@
 .sort_index {
   display: block;
   text-align: center;
-  padding-bottom: 10px;
+  padding-bottom: 30px;
 }
 
 .album_art {

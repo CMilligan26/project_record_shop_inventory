@@ -10,17 +10,18 @@ h1 {
 }
 
 body {
-  background: black;
+  font-family: sans-serif;
+  background: rgb(196, 246, 201);
   background-size: 100%;
-  color: white;
+  color: black;
   padding: 0px;
   margin: 0px;
 }
 
 a:link, a:visited, a:active {
-  color: white;
+  color: black;
 }
 /*Change the link on mouse hover*/
 a:hover {
-  color: Yellow;
+  color: grey;
 }
