@@ -23,7 +23,7 @@
       <label class = "form_label" for="genres">Genre(s):</label>
       <select class = "form_select" id="genres" name="genres" multiple>
         <% for genre in @all_genres %>
-        <option value="<%= genre.id %>" <%= 'selected' if @genres.includes? (genre.genre_name) %>><%= genre.genre_name %></option>
+        <option value="<%= genre.id %>" <%= 'selected' if @genres.includes? (genre) %>><%= genre.genre_name %></option>
         <% end %>
       </select>
       <br>
