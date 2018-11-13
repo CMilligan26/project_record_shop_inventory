@@ -48,12 +48,12 @@ class Artist
     return item_to_map.map{|item| Artist.new(item)}
   end
 
-  def get_records
+  def self.get_records(id)
     sql = "SELECT records.*
     FROM records
     WHERE artist_id = $1"
-    values = [@id]
-    Records.map(SqlRunner.run(sql, values))
+    values = [id]
+    Record.map(SqlRunner.run(sql, values))
   end
 
 end

@@ -20,6 +20,7 @@ end
 
 get '/artists/:id' do
   @artist = Artist.artist(params['id'].to_i)
+  @records = Artist.get_records(params['id'])
   erb (:"/artists/show")
 end
 
