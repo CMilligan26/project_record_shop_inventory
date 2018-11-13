@@ -19,10 +19,10 @@
 	<tr>
 		<td><a href="/records/<%=sale.record_id%>"><span><%=sale.get_record_info.first.title%></span></a></td>
 		<td><%= sale.provide_sale_quantity %></td>
-		<td><%= sale.record_buying_cost %></td>
-		<td><%= sale.record_selling_price %></td>
-		<td><%= sale.record_markup %></td>
-		<td><%= sale.record_profit %></td>
+		<td>£<%= sale.record_buying_cost %></td>
+		<td>£<%= sale.record_selling_price %></td>
+		<td>£<%= sale.record_markup %></td>
+		<td>£<%= sale.record_profit %></td>
 		<td><form class="edit_button" action="/sales/<%= sale.id %>/edit" method="get">
 			<input  type="submit" value="EDIT">
 		</form></td>
@@ -44,9 +44,9 @@
 		</tr>
 	</thead>
 	<tr>
-		<td><%= Sale.total_record_buying_cost %></td>
-		<td><%= Sale.total_record_selling_price %></td>
-		<td><%= Sale.total_record_mark_up %></td>
-		<td><%= Sale.total_profit %></td>
+		<td>£<%= Sale.total_record_buying_cost %></td>
+		<td>£<%= Sale.total_record_selling_price %></td>
+		<td>£<%= Sale.total_record_mark_up %></td>
+		<td>£<%= Sale.total_profit %></td>
 	</tr>
 </table>
