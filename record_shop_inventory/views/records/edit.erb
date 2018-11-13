@@ -22,15 +22,15 @@
   </div>
   <div class = "checkbox_input" id="genre">
     <label class = "checkbox_select" for="genre">Genre(s):</label>
-      <br>
-      <% hash_number = 0 %>
-      <% for genre in @all_genres %>
-      <input class = "checkbox_select" type="checkbox" name=<%="genres"+hash_number.to_s %> value="<%=genre.id%>"
-      <%= is_checked = 0
-      @genres.each{|record_genre| if record_genre.id == genre.id then is_checked += 1 end}
-      'checked' if is_checked == 1 %>> <%=genre.genre_name%> <br>
-      <% hash_number += 1 %>
-      <% end %>
+    <br>
+    <% hash_number = 0 %>
+    <% for genre in @all_genres %>
+    <input class = "checkbox_select" type="checkbox" name=<%="genres"+hash_number.to_s %> value="<%=genre.id%>"
+    <%= is_checked = 0
+    @genres.each{|record_genre| if record_genre.id == genre.id then is_checked += 1 end}
+    'checked' if is_checked == 1 %>> <%=genre.genre_name%> <br>
+    <% hash_number += 1 %>
+    <% end %>
     <br>
   </div>
   <div class = "text_input">

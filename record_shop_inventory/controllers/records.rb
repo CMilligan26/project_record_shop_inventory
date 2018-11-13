@@ -18,14 +18,22 @@ post '/records/new' do
     new_label = Label.new(params)
     new_label.save
     params['label_id'] = new_label.id
-    record = Record.new(params)
-    record.save
-    redirect to ("/records/"+record.id.to_s)
-  else
-    record = Record.new(params)
-    record.save
-    redirect to ("/records/"+record.id.to_s)
   end
+
+  record = Record.new(params)
+  record.save
+
+  all_genres = Genre.all
+  hash_counter = 0
+  all_genres.count.times do
+    if params.has_key?("genres"+hash_counter.to_s)
+      hash = GenreCategorization.new({'record_id' => record.id, 'genre_id' => params["genres"+hash_counter.to_s]})
+      hash.save
+    end
+    hash_counter+=1
+  end
+
+  redirect to ("/records/"+record.id.to_s)
 end
 
 get '/records/:id' do

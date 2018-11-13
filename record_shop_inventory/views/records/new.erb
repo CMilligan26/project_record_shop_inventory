@@ -27,7 +27,7 @@
 
   <div class = "text_input">
     <label class = "form_label" for="record_title">Title:</label>
-    <input class = "form_input" type="text" id="record_title" name="title" placeholder="e.g. The Wall"/>
+    <input class = "form_input" type="text" id="record_title" name="title"/>
     <br>
     <div class = "select_input">
       <label class = "form_label" for="artist">Artist:</label>
@@ -38,30 +38,35 @@
       </select>
       <br>
     </div>
-    <div class = "select_input">
-      <label class = "form_label" for="genres">Genre(s):</label>
-      <select class = "form_select" id="genres" name="genres" multiple>
-        <% for genre in @all_genres %>
-        <input type=checkbox value="<%= genre.id %>" name=<%=genre.genre_name%>>
-        <% end %>
-      </select>
-      <br>
-    </div>
+    <br>
+  </div>
+  <div class = "checkbox_input" id="genre">
+    <label class = "checkbox_select" for="genre">Genre(s):</label>
+    <br>
+    <% hash_number = 0 %>
+    <% for genre in @all_genres %>
+    <input class = "checkbox_select" type="checkbox" name=<%="genres"+hash_number.to_s %> value="<%=genre.id%>"> <%=genre.genre_name%>
+    <br>
+    <% hash_number += 1 %>
+    <% end %>
+    <br>
+  </div>
+  <div class = "text_input">
     <br>
     <label class = "form_label" for="record_release_date">Release Date:</label>
-    <input class = "form_input" type="text" id="record_release_date" name="release_date" placeholder="e.g. Released 30 November 1979"/>
+    <input class = "form_input" type="text" id="record_release_date" name="release_date"/>
     <br>
   </div>
 
   <div class = "number_input">
     <label class = "form_label" for="record_stock_quantity">Stock Quantity:</label>
-    <input class = "form_input" type="number" id="record_stock_quantity" name="stock_quantity" min="1" max="1000"/>
+    <input class = "form_input" type="number" id="record_stock_quantity" name="stock_quantity" min="1" max="1000" value="0"/>
     <br>
     <label class = "form_label" for="record_buying_cost">Unit Price:</label>
-    <input class = "form_input" type="number" id="record_buying_cost" name="buying_cost" min="1" max="1000"/>
+    <input class = "form_input" type="number" id="record_buying_cost" name="buying_cost" min="1" max="1000" value="0"/>
     <br>
     <label class = "form_label" for="record_selling_price">Retail Price:</label>
-    <input class = "form_input" type="number" id="record_selling_price" name="selling_price" min="1" max="1000"/>
+    <input class = "form_input" type="number" id="record_selling_price" name="selling_price" min="1" max="1000" value="0"/>
     <br>
   </div>
 
