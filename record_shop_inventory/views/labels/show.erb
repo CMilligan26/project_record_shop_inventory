@@ -29,8 +29,7 @@
     			<th scope="col">Title</th>
     			<th scope="col">Artist</th>
     			<th scope="col">Genre(s)</th>
-    			<th scope="col">Description</th>
-    			<th scope="col">Label</th>
+    			<th scope="col">Release Date</th>
     			<th scope="col">Stock</th>
     		</tr>
     	</thead>
@@ -44,7 +43,6 @@
     		<%end%>
     		</td>
     		<td><%=record.release_date%></td>
-    		<td><a href="/labels/<%=record.label_id%>"><span><%=record.label.first.name%></span></a></td>
     		<%if record.provide_stock_quantity < 5%>
     		<td class = "bad_stock"><%=record.provide_stock_quantity%></td>
     		<%elsif record.provide_stock_quantity >= 10%>
