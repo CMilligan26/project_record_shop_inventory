@@ -43,6 +43,12 @@ class GenreCategorization
     SqlRunner.run(sql)
   end
 
+  def self.delete_all_for_record(id)
+    sql = "DELETE FROM genre_categorizations WHERE record_id = $1"
+    values = [id]
+    SqlRunner.run(sql, values)
+  end
+
   def self.map(item_to_map)
     return item_to_map.map{|item| GenreCategorization.new(item)}
   end

@@ -2,6 +2,7 @@ require( 'sinatra' )
 require( 'sinatra/contrib/all' )
 require('pry-byebug')
 require_relative( '../models/record.rb' )
+require_relative( '../models/genre_categorization.rb' )
 also_reload( '../models/*' )
 
 get '/records/new' do
@@ -21,9 +22,9 @@ post '/records/new' do
     record.save
     redirect to ("/records/"+record.id.to_s)
   else
-  record = Record.new(params)
-  record.save
-  redirect to ("/records/"+record.id.to_s)
+    record = Record.new(params)
+    record.save
+    redirect to ("/records/"+record.id.to_s)
   end
 end
 
@@ -38,14 +39,25 @@ get '/records/:id/edit' do
   @labels = Label.all
   @label = Label.label(@record.first.label_id)
   @artists = Artist.all
-  @artist = Artist.artist(record.first.artist_id)
+  @artist = Artist.artist(@record.first.artist_id)
   @all_genres = Genre.all
   @genres = @record.first.get_all_genres
   erb (:"/records/edit")
 end
 
 post '/records/:id' do
+  GenreCategorization.delete_all_for_record(params['id'].to_i)
+  all_genres = Genre.all
+  hash_counter = 0
+  all_genres.count.times do
+    if params.has_key?("genres"+hash_counter.to_s)
+      hash = GenreCategorization.new({'record_id' => params['id'], 'genre_id' => params["genres"+hash_counter.to_s]})
+      hash.save
+    end
+    hash_counter+=1
+  end
   old_record = Record.record(params['id'].to_i)
+  params['stock_quantity'] = old_record.first.provide_stock_quantity
   record = Record.new(params)
   if record.file = ""
     record.file = old_record.first.file

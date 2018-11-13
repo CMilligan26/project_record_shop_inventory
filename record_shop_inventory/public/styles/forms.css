@@ -72,3 +72,12 @@
   vertical-align: top;
   padding-left: 10px;
 }
+
+.checkbox_input {
+  display: block;
+  vertical-align: top;
+}
+
+.checkbox_select {
+  text-align: center;
+}

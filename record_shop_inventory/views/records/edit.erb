@@ -19,15 +19,21 @@
       <br>
     </div>
     <br>
-    <div class = "select_input">
-      <label class = "form_label" for="genres">Genre(s):</label>
-      <select class = "form_select" id="genres" name="genres" multiple>
-        <% for genre in @all_genres %>
-        <option value="<%= genre.id %>" <%= 'selected' if @genres.includes? (genre) %>><%= genre.genre_name %></option>
-        <% end %>
-      </select>
+  </div>
+  <div class = "checkbox_input" id="genre">
+    <label class = "checkbox_select" for="genre">Genre(s):</label>
       <br>
-    </div>
+      <% hash_number = 0 %>
+      <% for genre in @all_genres %>
+      <input class = "checkbox_select" type="checkbox" name=<%="genres"+hash_number.to_s %> value="<%=genre.id%>"
+      <%= is_checked = 0
+      @genres.each{|record_genre| if record_genre.id == genre.id then is_checked += 1 end}
+      'checked' if is_checked == 1 %>> <%=genre.genre_name%> <br>
+      <% hash_number += 1 %>
+      <% end %>
+    <br>
+  </div>
+  <div class = "text_input">
     <br>
     <label class = "form_label" for="record_release_date">Release Date:</label>
     <input class = "form_input" type="text" id="record_release_date" name="release_date" value="<%= @record.first.release_date %>"/>

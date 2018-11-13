@@ -105,10 +105,6 @@ class Record
   end
 
   def update
-    #for update when a new record is created, needs to keep the same stock since it will be 0 as the user cannot provide a value for it
-    if @stock_quantity == 0 and record.first.provide_stock_quantity != 1
-      @stock_quantity = record.first.provide_stock_quantity
-    end
     sql = "UPDATE records SET (title, artist_id, release_date, stock_quantity, buying_cost, selling_price, label_id, file) = ($1, $2, $3, $4, $5, $6, $7, $8) WHERE id = $9"
     values = [@title, @artist_id, @release_date, @stock_quantity, @buying_cost, @selling_price, @label_id, @file, @id]
     SqlRunner.run(sql, values)
@@ -178,7 +174,7 @@ class Record
     sql = "SELECT genres.*
     FROM genres
     INNER JOIN genre_categorizations
-    ON genres.id = genre_categorizations.genre_id
+    ON genre_categorizations.genre_id = genres.id
     INNER JOIN records
     ON genre_categorizations.record_id = records.id
     WHERE records.id = $1"
