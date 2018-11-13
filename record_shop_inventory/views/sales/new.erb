@@ -8,6 +8,7 @@
   <div class = "select_input">
     <label class = "form_label" for="record_title">Record:</label>
     <select class = "form_select" id="record_title" name="record_id">
+      <option style="display:none" disabled selected value> -- Choose Record -- </option>
       <% for record in @records %>
       <option value="<%= record.id %>"><%= record.title %></option>
       <% end %>
