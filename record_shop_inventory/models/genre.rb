@@ -48,4 +48,16 @@ class Genre
     return item_to_map.map{|item| Genre.new(item)}
   end
 
+  def self.get_records(id)
+    sql = "SELECT records.*
+FROM records
+INNER JOIN genre_categorizations
+ON records.id = genre_categorizations.record_id
+INNER JOIN genres
+ON genre_categorizations.genre_id = genres.id
+WHERE genres.id = $1"
+    values = [id]
+    Record.map(SqlRunner.run(sql, values))
+  end
+
 end
