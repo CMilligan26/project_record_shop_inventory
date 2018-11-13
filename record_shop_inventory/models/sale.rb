@@ -111,30 +111,30 @@ class Sale
   end
 
   def self.total_record_buying_cost
-    sales = Sale.all
+    sales = Sale.all_sales_info
     total_buying_cost = 0
-    sales.each{|sale| total_buying_cost += sale.total_buying_cost}
+    sales.each{|sale| total_buying_cost += sale['total_buying_cost'].to_f}
     return total_buying_cost.round(2)
   end
 
   def self.total_record_selling_price
-    sales = Sale.all
+    sales = Sale.all_sales_info
     total_selling_price = 0
-    sales.each{|sale| total_selling_price += sale.total_selling_price}
+    sales.each{|sale| total_selling_price += sale['total_selling_price'].to_f}
     return total_selling_price.round(2)
   end
 
   def self.total_record_mark_up
-    sales = Sale.all
+    sales = Sale.all_sales_info
     total_markup = 0
-    sales.each{|sale| total_markup += sale.total_markup}
+    sales.each{|sale| total_markup += sale['total_markup'].to_f}
     return total_markup.round(2)
   end
 
   def self.total_profit
-    sales = Sale.all
+    sales = Sale.all_sales_info
     total_profit = 0
-    sales.each{|sale| total_profit += sale.total_profit}
+    sales.each{|sale| total_profit += sale['total_profit'].to_f}
     return total_profit.round(2)
   end
 
