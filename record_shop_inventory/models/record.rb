@@ -87,6 +87,10 @@ class Record
       sql = "SELECT * FROM records ORDER BY stock_quantity ASC"
     elsif sort == 'stock_quantity highest-lowest'
       sql = "SELECT * FROM records ORDER BY stock_quantity DESC"
+    else
+      sql = "SELECT records.*
+FROM records
+WHERE UPPER(title) LIKE '%#{sort.upcase}%'"
     end
     Record.map(SqlRunner.run(sql))
   end
