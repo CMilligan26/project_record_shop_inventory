@@ -52,4 +52,12 @@ class Label
     return item_to_map.map{|item| Label.new(item)}
   end
 
+  def self.get_records(id)
+    sql = "SELECT records.*
+    FROM records
+    WHERE label_id = $1"
+    values = [id]
+    Record.map(SqlRunner.run(sql, values))
+  end
+
 end

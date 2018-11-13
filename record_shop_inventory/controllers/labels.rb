@@ -20,6 +20,7 @@ end
 
 get '/labels/:id' do
   @label = Label.label(params['id'].to_i)
+  @records = Label.get_records(params['id'])
   erb (:"/labels/show")
 end
 
