@@ -23,6 +23,13 @@ post '/records/new' do
   record = Record.new(params)
   record.save
 
+  if params['genre_name'] != ''
+    genre = Genre.new({'genre_name' => params['genre_name']})
+    genre.save
+    gc = GenreCategorization.new({'record_id' => record.id, 'genre_id' => genre.id})
+    gc.save
+  end
+
   all_genres = Genre.all
   hash_counter = 0
   all_genres.count.times do
