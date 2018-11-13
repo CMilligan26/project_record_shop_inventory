@@ -7,10 +7,10 @@
 
   <div class = "text_input">
     <label class = "form_label" for="label_name">Label Name:</label>
-    <input class = "form_input" type="text" id="label_name" name="name" value="<%= @label.first.name %>"/>
+    <input class = "form_input" type="text" id="label_name" name="name" value="<%= @label.first.name %>" required minlength="1"/>
     <br>
     <label class = "form_label" for="location">Label Location:</label>
-    <input class = "form_input" type="text" id="location" name="location" value="<%= @label.first.location %>"/>
+    <input class = "form_input" type="text" id="location" name="location" value="<%= @label.first.location %>" required minlength="1"/>
     <br>
   </div>
 

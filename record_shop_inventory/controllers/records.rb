@@ -67,6 +67,18 @@ get '/records/:id/edit' do
 end
 
 post '/records/:id' do
+  if params['label_id'] == 'add_new'
+    new_label = Label.new(params)
+    new_label.save
+    params['label_id'] = new_label.id
+  end
+
+  if params['artist_id'] == 'add_new'
+    new_artist = Artist.new(params)
+    new_artist.save
+    params['artist_id'] = new_artist.id
+  end
+
   GenreCategorization.delete_all_for_record(params['id'].to_i)
   all_genres = Genre.all
   hash_counter = 0
@@ -77,6 +89,14 @@ post '/records/:id' do
     end
     hash_counter+=1
   end
+
+  if params['genre_name'] != ''
+    genre = Genre.new({'genre_name' => params['genre_name']})
+    genre.save
+    gc = GenreCategorization.new({'record_id' => params['id'], 'genre_id' => genre.id})
+    gc.save
+  end
+  
   old_record = Record.record(params['id'].to_i)
   params['stock_quantity'] = old_record.first.provide_stock_quantity
   record = Record.new(params)

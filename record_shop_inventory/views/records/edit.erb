@@ -1,36 +1,69 @@
 <a href="/"><span>Back to Inventory</span></a>
 <br>
 
-<h1> Edit Record </h1>
+<h1> Edit <%=@record.first.title%> </h1>
 
 <form class = "new_form" action="/records/<%=@record.first.id%>" method="post">
 
-  <div class = "text_input">
-    <label class = "form_label" for="record_title">Title:</label>
-    <input class = "form_input" type="text" id="record_title" name="title" value="<%= @record.first.title %>"/>
-    <br>
-    <div class = "select_input">
-      <label class = "form_label" for="artist">Artist:</label>
-      <select class = "form_select" id="artist" name="artist_id">
-        <% for artist in @artists %>
-        <option value="<%= artist.id %>" <%= 'selected' if @artist.first.id == artist.id %>><%= artist.artist_name %></option>
-        <% end %>
-      </select>
-      <br>
-    </div>
+  <div class = "select_input">
+    <label class = "form_label" for="label_name">Label:</label>
+    <select class = "form_select" id="label_name" name="label_id">
+      <option value="<%= 'add_new' %>">Add New Label</option>
+      <% for label in @labels %>
+      <option value="<%= label.id %>" <%= 'selected' if @label.first.id == label.id %>><%= label.name %></option>
+      <% end %>
+    </select>
     <br>
   </div>
-  <div class = "checkbox_input" id="genre">
-    <label class = "checkbox_select" for="genre">Genre(s):</label>
+
+  <div class = "text_input">
+    <label class = "form_label" for="label_name">Label Name:</label>
+    <input class = "form_input" type="text" id="label_name" name="name" placeholder="Only for new label"/>
     <br>
-    <% hash_number = 0 %>
-    <% for genre in @all_genres %>
-    <input class = "checkbox_select" type="checkbox" name=<%="genres"+hash_number.to_s %> value="<%=genre.id%>"
-    <%= is_checked = 0
-    @genres.each{|record_genre| if record_genre.id == genre.id then is_checked += 1 end}
-    'checked' if is_checked == 1 %>> <%=genre.genre_name%> <br>
-    <% hash_number += 1 %>
-    <% end %>
+    <label class = "form_label" for="location">Label Location:</label>
+    <input class = "form_input" type="text" id="location" name="location" placeholder="Only for new label"/>
+    <br>
+  </div>
+
+  <div class = "text_input">
+    <label class = "form_label" for="record_title">Title:</label>
+    <input class = "form_input" type="text" id="record_title" name="title" required minlength="1" value="<%= @record.first.title %>"/>
+    <br>
+  </div>
+
+  <div class = "select_input">
+    <label class = "form_label" for="artist">Artist:</label>
+    <select class = "form_select" id="artist" name="artist_id">
+      <option value="<%= 'add_new' %>">Add New Artist</option>
+      <% for artist in @artists %>
+      <option value="<%= artist.id %>" <%= 'selected' if @artist.first.id == artist.id %>><%= artist.artist_name %></option>
+      <% end %>
+    </select>
+    <br>
+  </div>
+  <br>
+  <div class = "text_input">
+    <label class = "form_label" for="artist_name">Artist Name:</label>
+    <input class = "form_input" type="text" id="artist_name" name="artist_name" placeholder="Only for new artist"/>
+    <br>
+  </div>
+<br>
+<div class = "checkbox_input" id="genre">
+  <label class = "checkbox_select" for="genre">Genre(s):</label>
+  <br>
+  <% hash_number = 0 %>
+  <% for genre in @all_genres %>
+  <input class = "checkbox_select" type="checkbox" name=<%="genres"+hash_number.to_s %> value="<%=genre.id%>"
+  <%= is_checked = 0
+  @genres.each{|record_genre| if record_genre.id == genre.id then is_checked += 1 end}
+  'checked' if is_checked == 1 %>> <%=genre.genre_name%> <br>
+  <% hash_number += 1 %>
+  <% end %>
+  <br>
+</div>
+  <div class = "text_input">
+    <label class = "form_label" for="genre_name">Genre Name:</label>
+    <input class = "form_input" type="text" id="genre_name" name="genre_name" placeholder="Only for new genre"/>
     <br>
   </div>
   <div class = "text_input">
@@ -46,16 +79,6 @@
     <br>
     <label class = "form_label" for="record_selling_price">Retail Price:</label>
     <input class = "form_input" type="number" id="record_selling_price" name="selling_price" min="1" max="1000" value="<%= @record.first.provide_selling_price %>"/>
-    <br>
-  </div>
-
-  <div class = "select_input">
-    <label class = "form_label" for="label_name">Label:</label>
-    <select class = "form_select" id="label_name" name="label_id">
-      <% for label in @labels %>
-      <option value="<%= label.id %>" <%= 'selected' if @label.first.id == label.id %>><%= label.name %></option>
-      <% end %>
-    </select>
     <br>
   </div>
 

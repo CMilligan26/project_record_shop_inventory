@@ -7,7 +7,7 @@
 
   <div class = "text_input">
     <label class = "form_label" for="genre_name">Genre Name:</label>
-    <input class = "form_input" type="text" id="genre_name" name="genre_name" value="<%= @genre.first.genre_name %>"/>
+    <input class = "form_input" type="text" id="genre_name" name="genre_name" value="<%= @genre.first.genre_name %>" required minlength="1"/>
     <br>
   </div>
 

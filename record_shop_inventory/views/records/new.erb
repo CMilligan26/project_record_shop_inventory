@@ -18,16 +18,16 @@
 
   <div class = "text_input">
     <label class = "form_label" for="label_name">Label Name:</label>
-    <input class = "form_input" type="text" id="label_name" name="name" placeholder="Only for new label"/>
+    <input class = "form_input" type="text" id="label_name" name="name" placeholder="Only for new label" required minlength="1"/>
     <br>
     <label class = "form_label" for="location">Label Location:</label>
-    <input class = "form_input" type="text" id="location" name="location" placeholder="Only for new label"/>
+    <input class = "form_input" type="text" id="location" name="location" placeholder="Only for new label" required minlength="1"/>
     <br>
   </div>
 
   <div class = "text_input">
     <label class = "form_label" for="record_title">Title:</label>
-    <input class = "form_input" type="text" id="record_title" name="title"/>
+    <input class = "form_input" type="text" id="record_title" name="title" required minlength="1"/>
     <br>
   </div>
 
@@ -44,7 +44,7 @@
   <br>
   <div class = "text_input">
     <label class = "form_label" for="artist_name">Artist Name:</label>
-    <input class = "form_input" type="text" id="artist_name" name="artist_name" placeholder="Only for new artist"/>
+    <input class = "form_input" type="text" id="artist_name" name="artist_name" placeholder="Only for new artist" required minlength="1"/>
     <br>
   </div>
 <br>
@@ -61,13 +61,13 @@
   </div>
   <div class = "text_input">
     <label class = "form_label" for="genre_name">Genre Name:</label>
-    <input class = "form_input" type="text" id="genre_name" name="genre_name" placeholder="Only for new genre"/>
+    <input class = "form_input" type="text" id="genre_name" name="genre_name" placeholder="Only for new genre" required minlength="1"/>
     <br>
   </div>
   <div class = "text_input">
     <br>
     <label class = "form_label" for="record_release_date">Release Date:</label>
-    <input class = "form_input" type="date" id="record_release_date" name="release_date"/>
+    <input class = "form_input" type="date" id="record_release_date" name="release_date" value="1900-01-01"/>
     <br>
   </div>
 

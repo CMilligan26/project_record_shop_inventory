@@ -10,11 +10,6 @@ also_reload( 'models/*' )
 require('pry-byebug')
 
 get '/' do
-  @records = Record.all
-  erb ( :"index" )
-end
-
-post '/' do
   @records = Record.all(params['sort'])
   erb ( :"index" )
 end
