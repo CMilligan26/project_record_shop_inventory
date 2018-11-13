@@ -29,17 +29,25 @@
     <label class = "form_label" for="record_title">Title:</label>
     <input class = "form_input" type="text" id="record_title" name="title"/>
     <br>
-    <div class = "select_input">
-      <label class = "form_label" for="artist">Artist:</label>
-      <select class = "form_select" id="artist" name="artist_id">
-        <% for artist in @artists %>
-        <option value="<%= artist.id %>"><%= artist.artist_name %></option>
-        <% end %>
-      </select>
-      <br>
-    </div>
+  </div>
+
+  <div class = "select_input">
+    <label class = "form_label" for="artist">Artist:</label>
+    <select class = "form_select" id="artist" name="artist_id">
+      <option value="<%= 'add_new' %>">Add New Artist</option>
+      <% for artist in @artists %>
+      <option value="<%= artist.id %>"><%= artist.artist_name %></option>
+      <% end %>
+    </select>
     <br>
   </div>
+  <br>
+  <div class = "text_input">
+    <label class = "form_label" for="artist_name">Artist Name:</label>
+    <input class = "form_input" type="text" id="artist_name" name="artist_name" placeholder="Only for new artist"/>
+    <br>
+  </div>
+<br>
   <div class = "checkbox_input" id="genre">
     <label class = "checkbox_select" for="genre">Genre(s):</label>
     <br>

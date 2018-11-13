@@ -20,6 +20,12 @@ post '/records/new' do
     params['label_id'] = new_label.id
   end
 
+  if params['artist_id'] == 'add_new'
+    new_artist = Artist.new(params)
+    new_artist.save
+    params['artist_id'] = new_artist.id
+  end
+
   record = Record.new(params)
   record.save
 
