@@ -79,50 +79,50 @@ class Sale
 
   def record_buying_cost
     sale_buying_cost = (get_record_info.first.provide_buying_cost * @sale_quantity)
-    return sale_buying_cost
+    return sale_buying_cost.round(2)
   end
 
   def record_selling_price
     sale_selling_price = (get_record_info.first.provide_selling_price * @sale_quantity)
-    return sale_selling_price
+    return sale_selling_price.round(2)
   end
 
   def record_markup
     sale_markup = (get_record_info.first.markup * @sale_quantity)
-    return sale_markup
+    return sale_markup.round(2)
   end
 
   def record_profit
     overhead = 0.5
-    return (record_markup*overhead).to_i
+    return (record_markup*overhead).round(2)
   end
 
   def self.total_record_buying_cost
     sales = Sale.all
     total_buying_cost = 0
     sales.each{|sale| total_buying_cost += sale.record_buying_cost}
-    return total_buying_cost
+    return total_buying_cost.round(2)
   end
 
   def self.total_record_selling_price
     sales = Sale.all
     total_selling_price = 0
     sales.each{|sale| total_selling_price += sale.record_selling_price}
-    return total_selling_price
+    return total_selling_price.round(2).round(2)
   end
 
   def self.total_record_mark_up
     sales = Sale.all
     total_markup = 0
     sales.each{|sale| total_markup += sale.record_markup}
-    return total_markup
+    return total_markup.round(2).round(2).round(2)
   end
 
   def self.total_profit
     sales = Sale.all
     total_profit = 0
     sales.each{|sale| total_profit += sale.record_profit}
-    return total_profit
+    return total_profit.round(2)
   end
 
 end

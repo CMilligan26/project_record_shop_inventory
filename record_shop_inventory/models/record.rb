@@ -16,8 +16,8 @@ class Record
     @artist_id = options['artist_id'].to_i
     @release_date = options['release_date']
     @stock_quantity = options['stock_quantity'].to_i
-    @buying_cost = options['buying_cost'].to_i
-    @selling_price = options['selling_price'].to_i
+    @buying_cost = options['buying_cost'].to_f.round(2)
+    @selling_price = options['selling_price'].to_f.round(2)
     @label_id = options['label_id'].to_i
     if options['running_stock_total']
       @running_stock_total = options['running_stock_total'].to_i
@@ -130,7 +130,8 @@ WHERE UPPER(title) LIKE '%#{sort.upcase}%'"
   end
 
   def markup
-    return @selling_price - @buying_cost
+    markup = @selling_price - @buying_cost
+    return markup.round(2)
   end
 
   def label

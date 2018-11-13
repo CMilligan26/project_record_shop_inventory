@@ -75,10 +75,10 @@
 
   <div class = "number_input">
     <label class = "form_label" for="record_buying_cost">Unit Price:</label>
-    <input class = "form_input" type="number" id="record_buying_cost" name="buying_cost" min="1" max="1000" value="<%= @record.first.provide_buying_cost %>"/>
+    <input class = "form_input" type="number" id="record_buying_cost" name="buying_cost" step="0.01" min="1" max="1000" value="<%= @record.first.provide_buying_cost %>"/>
     <br>
     <label class = "form_label" for="record_selling_price">Retail Price:</label>
-    <input class = "form_input" type="number" id="record_selling_price" name="selling_price" min="1" max="1000" value="<%= @record.first.provide_selling_price %>"/>
+    <input class = "form_input" type="number" id="record_selling_price" name="selling_price" step="0.01" min="1" max="1000" value="<%= @record.first.provide_selling_price %>"/>
     <br>
   </div>
 

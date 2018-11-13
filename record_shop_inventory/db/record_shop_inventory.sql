@@ -29,8 +29,8 @@ CREATE TABLE records (
   running_stock_total INT8,
   stock_quantity INT8,
   total_sold INT8,
-  buying_cost INT8,
-  selling_price INT8,
+  buying_cost FLOAT(2),
+  selling_price FLOAT(2),
   label_id INT8 REFERENCES labels(id) ON DELETE CASCADE,
   file TEXT
 );
