@@ -1,0 +1,12 @@
+<a href="/"><span>Back to Inventory</span></a>
+<br>
+<h1><%=@artist.first.artist_name%></h1>
+
+<div class="show_button_collection">
+  <form class="edit_button" action="/artists/<%= @artist.first.id %>/edit" method="get">
+    <input  type="submit" value="EDIT">
+  </form>
+  <form class="delete_button" action="/artists/<%= @artist.first.id %>/delete" method="post">
+    <input type="submit" value="DELETE">
+  </form>
+  <div>

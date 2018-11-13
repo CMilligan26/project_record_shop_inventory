@@ -1,0 +1,18 @@
+<a href="/"><span>Back to Inventory</span></a>
+<br>
+
+<h1>Artists</h1>
+
+<br>
+<table>
+	<thead>
+		<tr>
+			<th scope="col"> Name </th>
+		</tr>
+	</thead>
+	<%@artists.each do |artist|%>
+	<tr>
+		<td><a href="/artists/<%=artist.id%>"><span><%=artist.artist_name%></span></a></td>
+	</tr>
+	<%end%>
+</table>
