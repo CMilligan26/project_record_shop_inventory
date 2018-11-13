@@ -5,7 +5,7 @@ require_relative( '../models/sale.rb' )
 also_reload( '../models/*' )
 
 get '/sales/all' do
-  @sales = Sale.all
+  @sales = Sale.all_sales_info
   erb ( :"/sales/all" )
 end
 

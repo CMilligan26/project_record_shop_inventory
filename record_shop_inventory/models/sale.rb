@@ -36,6 +36,11 @@ class Sale
     Sale.map(SqlRunner.run(sql))
   end
 
+  def self.all_sales_info
+    sql = "SELECT * FROM sales"
+    SqlRunner.run(sql).map{|hash| hash}
+  end
+
   def self.sale(id)
     sql = "SELECT * FROM sales WHERE id = $1"
     values = [id]
@@ -108,28 +113,28 @@ class Sale
   def self.total_record_buying_cost
     sales = Sale.all
     total_buying_cost = 0
-    sales.each{|sale| total_buying_cost += sale.record_buying_cost}
+    sales.each{|sale| total_buying_cost += sale.total_buying_cost}
     return total_buying_cost.round(2)
   end
 
   def self.total_record_selling_price
     sales = Sale.all
     total_selling_price = 0
-    sales.each{|sale| total_selling_price += sale.record_selling_price}
+    sales.each{|sale| total_selling_price += sale.total_selling_price}
     return total_selling_price.round(2)
   end
 
   def self.total_record_mark_up
     sales = Sale.all
     total_markup = 0
-    sales.each{|sale| total_markup += sale.record_markup}
+    sales.each{|sale| total_markup += sale.total_markup}
     return total_markup.round(2)
   end
 
   def self.total_profit
     sales = Sale.all
     total_profit = 0
-    sales.each{|sale| total_profit += sale.record_profit}
+    sales.each{|sale| total_profit += sale.total_profit}
     return total_profit.round(2)
   end
 
