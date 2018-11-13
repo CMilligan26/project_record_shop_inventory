@@ -8,7 +8,7 @@ class RecordTest < MiniTest::Test
 
   def setup
     label = Label.new({'id' => '1', 'name' => 'Test_Label', 'location' => 'Earth' })
-    @record = Record.new({'id' => '1', 'title' => 'Test_Record', 'artist' => 'Test_Artist', 'genre' => 'Test_Genre', 'description' => 'Test_Description', 'stock_quantity' => '3', 'buying_cost' => '10', 'selling_price' => '15', 'label_id' => label.id})
+    @record = Record.new({'id' => '1', 'title' => 'Test_Record', 'artist_id' => '1', 'release_date' => '2018-11-09', 'stock_quantity' => '3', 'buying_cost' => '10', 'selling_price' => '15', 'label_id' => label.id})
   end
 
   def test_record_exists
@@ -23,16 +23,12 @@ class RecordTest < MiniTest::Test
     assert_equal('Test_Record', @record.title)
   end
 
-  def test_record_has_artist
-    assert_equal('Test_Artist', @record.artist)
+  def test_record_has_artist_id
+    assert_equal(1, @record.artist_id)
   end
 
-  def test_record_has_genre
-    assert_equal('Test_Genre', @record.genre)
-  end
-
-  def test_record_has_description
-    assert_equal('Test_Description', @record.description)
+  def test_record_has_release_date
+    assert_equal('2018-11-09', @record.release_date)
   end
 
   def test_record_has_stock_quantity

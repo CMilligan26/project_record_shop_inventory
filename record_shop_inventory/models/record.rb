@@ -13,7 +13,7 @@ class Record
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @title = options['title']
-    @artist_id = options['artist_id']
+    @artist_id = options['artist_id'].to_i
     @release_date = options['release_date']
     @stock_quantity = options['stock_quantity'].to_i
     @buying_cost = options['buying_cost'].to_i
@@ -67,10 +67,10 @@ class Record
       INNER JOIN artists
       ON records.artist_id = artists.id
       ORDER BY UPPER(artists.artist_name) DESC"
-    elsif sort == 'description a-z'
-      sql = "SELECT * FROM records ORDER BY UPPER(description) ASC"
-    elsif sort == 'description z-a'
-      sql = "SELECT * FROM records ORDER BY UPPER(description) DESC"
+    elsif sort == 'release_date first-last'
+      sql = "SELECT * FROM records ORDER BY release_date ASC"
+    elsif sort == 'release_date last-first'
+      sql = "SELECT * FROM records ORDER BY release_date DESC"
     elsif sort == 'label a-z'
       sql = "SELECT records.*
       FROM records

@@ -68,15 +68,15 @@ genre5.save
 
 #RECORDS
 
-record1 = Record.new({'title' => 'Music Has the Right to Children', 'artist_id' => artist1.id, 'release_date' => 'Released 20 April 1998', 'stock_quantity' => '5', 'buying_cost' => '20', 'selling_price' => '30', 'label_id' => label1.id, 'file' => 'boc-mhtrtc.jpg'})
+record1 = Record.new({'title' => 'Music Has the Right to Children', 'artist_id' => artist1.id, 'release_date' => '1998-04-20', 'stock_quantity' => '5', 'buying_cost' => '20', 'selling_price' => '30', 'label_id' => label1.id, 'file' => 'boc-mhtrtc.jpg'})
 
-record2 = Record.new({'title' => 'Lost Horizons', 'artist_id' => artist2.id, 'release_date' => 'Released 7 October 2002', 'stock_quantity' => '1', 'buying_cost' => '50', 'selling_price' => '85', 'label_id' => label2.id, 'file' => 'lj-lh.jpg'})
+record2 = Record.new({'title' => 'Lost Horizons', 'artist_id' => artist2.id, 'release_date' => '2002-10-07', 'stock_quantity' => '1', 'buying_cost' => '50', 'selling_price' => '85', 'label_id' => label2.id, 'file' => 'lj-lh.jpg'})
 
-record3 = Record.new({'title' => 'Mezzanine', 'artist_id' => artist3.id, 'release_date' => 'Released 20 April 1998', 'stock_quantity' => '3', 'buying_cost' => '15', 'selling_price' => '21', 'label_id' => label3.id, 'file' => 'ma-m.jpg'})
+record3 = Record.new({'title' => 'Mezzanine', 'artist_id' => artist3.id, 'release_date' => '1998-04-20', 'stock_quantity' => '3', 'buying_cost' => '15', 'selling_price' => '21', 'label_id' => label3.id, 'file' => 'ma-m.jpg'})
 
-record4 = Record.new({'title' => 'Black Sands', 'artist_id' => artist4.id, 'release_date' => 'Released 29 March 2010', 'stock_quantity' => '2', 'buying_cost' => '20', 'selling_price' => '13', 'label_id' => label4.id, 'file' => 'b-bs.jpg'})
+record4 = Record.new({'title' => 'Black Sands', 'artist_id' => artist4.id, 'release_date' => '2010-03-29', 'stock_quantity' => '2', 'buying_cost' => '20', 'selling_price' => '13', 'label_id' => label4.id, 'file' => 'b-bs.jpg'})
 
-record5 = Record.new({'title' => 'Since I Left You', 'artist_id' => artist5.id, 'release_date' => 'Released 27 November 2000', 'stock_quantity' => '2', 'buying_cost' => '25', 'selling_price' => '35', 'label_id' => label5.id, 'file' => 'ta-sily.jpg'})
+record5 = Record.new({'title' => 'Since I Left You', 'artist_id' => artist5.id, 'release_date' => '2000-11-27', 'stock_quantity' => '2', 'buying_cost' => '25', 'selling_price' => '35', 'label_id' => label5.id, 'file' => 'ta-sily.jpg'})
 
 record1.save
 record2.save

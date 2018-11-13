@@ -7,6 +7,7 @@ require_relative( 'controllers/artists' )
 require_relative( 'controllers/genres' )
 require_relative( 'models/record.rb' )
 also_reload( 'models/*' )
+require('pry-byebug')
 
 get '/' do
   @records = Record.all

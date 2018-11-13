@@ -25,7 +25,7 @@ CREATE TABLE records (
   id SERIAL8 PRIMARY KEY,
   title TEXT,
   artist_id INT8 REFERENCES artists(id) ON DELETE CASCADE,
-  release_date TEXT,
+  release_date DATE,
   running_stock_total INT8,
   stock_quantity INT8,
   total_sold INT8,
