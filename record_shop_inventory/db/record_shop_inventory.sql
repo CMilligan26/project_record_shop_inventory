@@ -44,5 +44,14 @@ CREATE TABLE genre_categorizations (
 CREATE TABLE sales (
   id SERIAL8 PRIMARY KEY,
   record_id INT8 REFERENCES records(id) ON DELETE CASCADE,
-  sale_quantity INT8
+  sale_quantity INT8,
+  single_buying_cost FLOAT(2),
+  single_selling_price FLOAT(2),
+  single_markup FLOAT(2),
+  single_profit FLOAT(2),
+  total_buying_cost FLOAT(2),
+  total_selling_price FLOAT(2),
+  total_markup FLOAT(2),
+  total_profit FLOAT(2),
+  overhead FLOAT(2)
 );

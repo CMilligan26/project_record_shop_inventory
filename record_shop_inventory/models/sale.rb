@@ -6,12 +6,21 @@ class Sale
 
   attr_accessor :sale_quantity
 
-  attr_reader :id, :record_id
+  attr_reader :id, :record_id, :overhead, :single_buying_cost, :single_selling_price, :single_markup, :single_profit, :total_buying_cost, :total_selling_price, :total_markup, :total_profit
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @record_id = options['record_id'].to_i
     @sale_quantity = options['sale_quantity'].to_i
+    @overhead = options['overhead'].to_f
+    @single_buying_cost = get_record_info.first.provide_buying_cost
+    @single_selling_price = get_record_info.first.provide_selling_price
+    @single_markup = get_record_info.first.provide_selling_price - get_record_info.first.provide_buying_cost
+    @single_profit = (get_record_info.first.provide_selling_price - get_record_info.first.provide_buying_cost) * @overhead
+    @total_buying_cost = record_buying_cost
+    @total_selling_price = record_selling_price
+    @total_markup = record_markup
+    @total_profit = record_profit
   end
 
   def provide_record_id
@@ -35,8 +44,8 @@ class Sale
 
   def save
     if get_record_info.first.provide_stock_quantity >= @sale_quantity
-      sql = "INSERT INTO sales (record_id, sale_quantity) VALUES ($1, $2) RETURNING id"
-      values = [@record_id, @sale_quantity]
+      sql = "INSERT INTO sales (record_id, sale_quantity, overhead, single_buying_cost, single_selling_price, single_markup, single_profit, total_buying_cost, total_selling_price, total_markup, total_profit) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING id"
+      values = [@record_id, @sale_quantity, @overhead, @single_buying_cost, @single_selling_price, @single_markup, @single_profit, @total_buying_cost, @total_selling_price, @total_markup, @total_profit]
       sale = SqlRunner.run(sql, values).first;
       @id = sale['id'].to_i
       get_record_info.first.calculate_stock
@@ -47,8 +56,8 @@ class Sale
 
   def update
     if get_record_info.first.provide_stock_quantity >= @sale_quantity
-      sql = "UPDATE sales SET (record_id, sale_quantity) = ($1, $2) WHERE id = $3"
-      values = [@record_id, @sale_quantity, @id]
+      sql = "UPDATE sales SET (record_id, sale_quantity, single_buying_cost, single_selling_price, single_markup, single_profit, total_buying_cost, total_selling_price, total_markup, total_profit) = ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) WHERE id = $11"
+      values = [@record_id, @sale_quantity, @single_buying_cost, @single_selling_price, @single_markup, @single_profit, @total_buying_cost, @total_selling_price, @total_markup, @total_profit, @id]
       SqlRunner.run(sql, values)
       get_record_info.first.calculate_stock
     else
@@ -93,8 +102,7 @@ class Sale
   end
 
   def record_profit
-    overhead = 0.5
-    return (record_markup*overhead).round(2)
+    return (record_markup*@overhead).round(2)
   end
 
   def self.total_record_buying_cost
@@ -108,14 +116,14 @@ class Sale
     sales = Sale.all
     total_selling_price = 0
     sales.each{|sale| total_selling_price += sale.record_selling_price}
-    return total_selling_price.round(2).round(2)
+    return total_selling_price.round(2)
   end
 
   def self.total_record_mark_up
     sales = Sale.all
     total_markup = 0
     sales.each{|sale| total_markup += sale.record_markup}
-    return total_markup.round(2).round(2).round(2)
+    return total_markup.round(2)
   end
 
   def self.total_profit
@@ -123,6 +131,19 @@ class Sale
     total_profit = 0
     sales.each{|sale| total_profit += sale.record_profit}
     return total_profit.round(2)
+  end
+
+  def self.provide_previous_overhead
+    sql = "SELECT sales.*
+FROM sales
+ORDER BY id DESC
+LIMIT 1"
+    last_sale = Sale.map(SqlRunner.run(sql))
+    if last_sale.first != nil
+      return last_sale.first.overhead
+    else
+      return 0
+    end
   end
 
 end

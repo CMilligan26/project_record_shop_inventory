@@ -9,20 +9,30 @@
 		<tr>
 			<th scope="col"> Record Title </th>
 			<th scope="col"> Sale Quantity </th>
+			<th scope="col"> Cost of Unit at Time of Sale </th>
+			<th scope="col"> Price of Unit at Time of Sale </th>
+			<th scope="col"> Markup of Unit at Time of Sale </th>
+			<th scope="col"> Unit Profit </th>
 			<th scope="col"> Cost of Units </th>
 			<th scope="col"> Price of Units </th>
 			<th scope="col"> Markup of Units </th>
 			<th scope="col"> Profit from Sale </th>
+			<th scope="col"> Overhead Deduction for Markups </th>
 		</tr>
 	</thead>
 	<%@sales.each do |sale|%>
 	<tr>
 		<td><a href="/records/<%=sale.record_id%>"><span><%=sale.get_record_info.first.title%></span></a></td>
 		<td><%= sale.provide_sale_quantity %></td>
-		<td>£<%= sale.record_buying_cost %></td>
-		<td>£<%= sale.record_selling_price %></td>
-		<td>£<%= sale.record_markup %></td>
-		<td>£<%= sale.record_profit %></td>
+		<td>£<%= sale.single_buying_cost %></td>
+		<td>£<%= sale.single_selling_price %></td>
+		<td>£<%= sale.single_markup %></td>
+		<td>£<%= sale.single_profit %></td>
+		<td>£<%= sale.total_buying_cost %></td>
+		<td>£<%= sale.total_selling_price %></td>
+		<td>£<%= sale.total_markup %></td>
+		<td>£<%= sale.total_profit %></td>
+		<td><%= sale.overhead * 100%>%</td>
 		<td><form class="edit_button" action="/sales/<%= sale.id %>/edit" method="get">
 			<input  type="submit" value="EDIT">
 		</form></td>

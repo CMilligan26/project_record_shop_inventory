@@ -30,6 +30,8 @@ get '/sales/:id/edit' do
 end
 
 post '/sales/:id' do
+  old_sale = Sale.sale(params['id'].to_i)
+  params['overhead'] = old_sale.first.overhead
   sale = Sale.new(params)
   if sale.update == false
     redirect to ("/sales/failed")
