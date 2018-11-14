@@ -24,15 +24,15 @@ get '/genres/:id' do
   erb (:"/genres/show")
 end
 
-get '/genres/:id/edit' do
-  @genre = Genre.genre(params['id'].to_i)
-  erb (:"/genres/edit")
-end
-
 post '/genres/:id' do
   genre = Genre.new(params)
   genre.update
   redirect to ("/genres/"+params['id'].to_s)
+end
+
+get '/genres/:id/edit' do
+  @genre = Genre.genre(params['id'].to_i)
+  erb (:"/genres/edit")
 end
 
 post '/genres/:id/delete' do

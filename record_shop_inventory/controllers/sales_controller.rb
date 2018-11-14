@@ -23,12 +23,6 @@ post '/sales/new' do
   end
 end
 
-get '/sales/:id/edit' do
-  @records = Record.all
-  @sale = Sale.sale(params['id'].to_i)
-  erb (:"/sales/edit")
-end
-
 post '/sales/:id' do
   old_sale = Sale.sale(params['id'].to_i)
   params['overhead'] = old_sale.first.overhead
@@ -38,6 +32,12 @@ post '/sales/:id' do
   else
     redirect to ("/sales/all")
   end
+end
+
+get '/sales/:id/edit' do
+  @records = Record.all
+  @sale = Sale.sale(params['id'].to_i)
+  erb (:"/sales/edit")
 end
 
 post '/sales/:id/delete' do

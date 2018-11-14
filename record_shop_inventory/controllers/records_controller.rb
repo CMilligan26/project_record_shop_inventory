@@ -55,17 +55,6 @@ get '/records/:id' do
   erb (:"/records/show")
 end
 
-get '/records/:id/edit' do
-  @record = Record.record(params['id'].to_i)
-  @labels = Label.all
-  @label = Label.label(@record.first.label_id)
-  @artists = Artist.all
-  @artist = Artist.artist(@record.first.artist_id)
-  @all_genres = Genre.all
-  @genres = @record.first.get_all_genres
-  erb (:"/records/edit")
-end
-
 post '/records/:id' do
   if params['label_id'] == 'add_new'
     new_label = Label.new(params)
@@ -105,6 +94,17 @@ post '/records/:id' do
   end
   record.update
   redirect to ("/records/"+params['id'].to_s)
+end
+
+get '/records/:id/edit' do
+  @record = Record.record(params['id'].to_i)
+  @labels = Label.all
+  @label = Label.label(@record.first.label_id)
+  @artists = Artist.all
+  @artist = Artist.artist(@record.first.artist_id)
+  @all_genres = Genre.all
+  @genres = @record.first.get_all_genres
+  erb (:"/records/edit")
 end
 
 post '/records/:id/delete' do

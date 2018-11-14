@@ -24,15 +24,15 @@ get '/artists/:id' do
   erb (:"/artists/show")
 end
 
-get '/artists/:id/edit' do
-  @artist = Artist.artist(params['id'].to_i)
-  erb (:"/artists/edit")
-end
-
 post '/artists/:id' do
   artist = Artist.new(params)
   artist.update
   redirect to ("/artists/"+params['id'].to_s)
+end
+
+get '/artists/:id/edit' do
+  @artist = Artist.artist(params['id'].to_i)
+  erb (:"/artists/edit")
 end
 
 post '/artists/:id/delete' do
