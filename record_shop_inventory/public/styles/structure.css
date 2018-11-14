@@ -1,6 +1,5 @@
 .header_image {
   display: block;
-  margin-top: 10px;
   width: 100vw;
 }
 
@@ -37,5 +36,4 @@ a:hover {
   display: block;
   width: 100vw;
   padding-top: 30px;
-  padding-bottom: 10px;
 }
