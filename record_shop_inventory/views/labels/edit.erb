@@ -7,21 +7,21 @@
 <br>
 
 <div>
-<form action="/labels/<%=@label.first.id%>" method="post">
+  <form action="/labels/<%=@label.first.id%>" method="post">
 
-  <div>
-    <label for="label_name">Label Name:</label>
-    <input type="text" id="label_name" name="name" value="<%= @label.first.name %>" required minlength="1"/>
+    <div>
+      <label for="label_name">Label Name:</label>
+      <input type="text" id="label_name" name="name" value="<%= @label.first.name %>" required minlength="1"/>
+      <br>
+      <label for="location">Label Location:</label>
+      <input type="text" id="location" name="location" value="<%= @label.first.location %>" required minlength="1"/>
+    </div>
+
     <br>
-    <label for="location">Label Location:</label>
-    <input type="text" id="location" name="location" value="<%= @label.first.location %>" required minlength="1"/>
-  </div>
 
-  <br>
+    <div>
+      <button>Save Label</button>
+    </div>
 
-  <div>
-    <button>Save Label</button>
-  </div>
-
-</form>
+  </form>
 </div>

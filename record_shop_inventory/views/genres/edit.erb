@@ -7,19 +7,19 @@
 <br>
 
 <div>
-<form action="/genres/<%=@genre.first.id%>" method="post">
+  <form action="/genres/<%=@genre.first.id%>" method="post">
 
-  <div>
-    <label for="genre_name">Genre Name:</label>
-    <input type="text" id="genre_name" name="genre_name" value="<%= @genre.first.genre_name %>" required minlength="1"/>
+    <div>
+      <label for="genre_name">Genre Name:</label>
+      <input type="text" id="genre_name" name="genre_name" value="<%= @genre.first.genre_name %>" required minlength="1"/>
+      <br>
+    </div>
+
     <br>
-  </div>
 
-  <br>
+    <div>
+      <button>Save Genre</button>
+    </div>
 
-  <div>
-    <button>Save Genre</button>
-  </div>
-
-</form>
+  </form>
 </div>

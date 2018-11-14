@@ -7,16 +7,16 @@
 <br>
 
 <div>
-<table>
-	<thead>
+	<table>
+		<thead>
+			<tr>
+				<th scope="col"> Name </th>
+			</tr>
+		</thead>
+		<%@genres.each do |genre|%>
 		<tr>
-			<th scope="col"> Name </th>
+			<td><a href="/genres/<%=genre.id%>"><span><%=genre.genre_name%></span></a></td>
 		</tr>
-	</thead>
-	<%@genres.each do |genre|%>
-	<tr>
-		<td><a href="/genres/<%=genre.id%>"><span><%=genre.genre_name%></span></a></td>
-	</tr>
-	<%end%>
-</table>
+		<%end%>
+	</table>
 </div>

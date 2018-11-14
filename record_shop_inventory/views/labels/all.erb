@@ -7,18 +7,18 @@
 <br>
 
 <div>
-<table>
-	<thead>
+	<table>
+		<thead>
+			<tr>
+				<th scope="col"> Name </th>
+				<th scope="col"> Location </th>
+			</tr>
+		</thead>
+		<%@labels.each do |label|%>
 		<tr>
-			<th scope="col"> Name </th>
-			<th scope="col"> Location </th>
+			<td><a href="/labels/<%=label.id%>"><span><%=label.name%></span></a></td>
+			<td><%= label.location %></td>
 		</tr>
-	</thead>
-	<%@labels.each do |label|%>
-	<tr>
-		<td><a href="/labels/<%=label.id%>"><span><%=label.name%></span></a></td>
-		<td><%= label.location %></td>
-	</tr>
-	<%end%>
-</table>
+		<%end%>
+	</table>
 </div>

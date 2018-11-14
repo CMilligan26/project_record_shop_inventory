@@ -7,65 +7,65 @@
 <br>
 
 <div>
-<table>
-	<thead>
+	<table>
+		<thead>
+			<tr>
+				<th scope="col"> Record Title </th>
+				<th scope="col"> Sale Quantity </th>
+				<th scope="col"> Cost of Unit at Time of Sale </th>
+				<th scope="col"> Price of Unit at Time of Sale </th>
+				<th scope="col"> Markup of Unit at Time of Sale </th>
+				<th scope="col"> Unit Profit </th>
+				<th scope="col"> Cost of Units </th>
+				<th scope="col"> Price of Units </th>
+				<th scope="col"> Markup of Units </th>
+				<th scope="col"> Profit from Sale </th>
+				<th scope="col"> Overhead Deduction for Markups </th>
+			</tr>
+		</thead>
+		<%@sales.each do |sale|%>
 		<tr>
-			<th scope="col"> Record Title </th>
-			<th scope="col"> Sale Quantity </th>
-			<th scope="col"> Cost of Unit at Time of Sale </th>
-			<th scope="col"> Price of Unit at Time of Sale </th>
-			<th scope="col"> Markup of Unit at Time of Sale </th>
-			<th scope="col"> Unit Profit </th>
-			<th scope="col"> Cost of Units </th>
-			<th scope="col"> Price of Units </th>
-			<th scope="col"> Markup of Units </th>
-			<th scope="col"> Profit from Sale </th>
-			<th scope="col"> Overhead Deduction for Markups </th>
+			<td><a href="/records/<%=sale['record_id']%>"><span><%=Record.record(sale['record_id']).first.title%></span></a></td>
+			<td><%= sale['sale_quantity'] %></td>
+			<td>£<%= sale['single_buying_cost'] %></td>
+			<td>£<%= sale['single_selling_price'] %></td>
+			<td>£<%= sale['single_markup'] %></td>
+			<td>£<%= sale['single_profit'] %></td>
+			<td>£<%= sale['total_buying_cost'] %></td>
+			<td>£<%= sale['total_selling_price'] %></td>
+			<td>£<%= sale['total_markup'] %></td>
+			<td>£<%= sale['total_profit'] %></td>
+			<td><%= sale['overhead'].to_f * 100%>%</td>
+			<td><form class="edit_button" action="/sales/<%= sale['id'] %>/edit" method="get">
+				<input  type="submit" value="EDIT">
+			</form></td>
+			<td><form class="delete_button" action="/sales/<%= sale['id'] %>/delete" method="post">
+				<input type="submit" value="DELETE">
+			</form></td>
 		</tr>
-	</thead>
-	<%@sales.each do |sale|%>
-	<tr>
-		<td><a href="/records/<%=sale['record_id']%>"><span><%=Record.record(sale['record_id']).first.title%></span></a></td>
-		<td><%= sale['sale_quantity'] %></td>
-		<td>£<%= sale['single_buying_cost'] %></td>
-		<td>£<%= sale['single_selling_price'] %></td>
-		<td>£<%= sale['single_markup'] %></td>
-		<td>£<%= sale['single_profit'] %></td>
-		<td>£<%= sale['total_buying_cost'] %></td>
-		<td>£<%= sale['total_selling_price'] %></td>
-		<td>£<%= sale['total_markup'] %></td>
-		<td>£<%= sale['total_profit'] %></td>
-		<td><%= sale['overhead'].to_f * 100%>%</td>
-		<td><form class="edit_button" action="/sales/<%= sale['id'] %>/edit" method="get">
-			<input  type="submit" value="EDIT">
-		</form></td>
-		<td><form class="delete_button" action="/sales/<%= sale['id'] %>/delete" method="post">
-			<input type="submit" value="DELETE">
-		</form></td>
-	</tr>
-	<%end%>
-</table>
+		<%end%>
+	</table>
 </div>
 
 <br>
 
 <div>
-<table>
-	<thead>
+	<table>
+		<thead>
+			<tr>
+				<th scope="col"> Total Cost of Units Sold </th>
+				<th scope="col"> Total Price of Units Sold </th>
+				<th scope="col"> Total Markup of Units Sold </th>
+				<th scope="col"> Total Profit from Sales </th>
+			</tr>
+		</thead>
 		<tr>
-			<th scope="col"> Total Cost of Units Sold </th>
-			<th scope="col"> Total Price of Units Sold </th>
-			<th scope="col"> Total Markup of Units Sold </th>
-			<th scope="col"> Total Profit from Sales </th>
+			<td>£<%= Sale.total_record_buying_cost %></td>
+			<td>£<%= Sale.total_record_selling_price %></td>
+			<td>£<%= Sale.total_record_mark_up %></td>
+			<td>£<%= Sale.total_profit %></td>
 		</tr>
-	</thead>
-	<tr>
-		<td>£<%= Sale.total_record_buying_cost %></td>
-		<td>£<%= Sale.total_record_selling_price %></td>
-		<td>£<%= Sale.total_record_mark_up %></td>
-		<td>£<%= Sale.total_profit %></td>
-	</tr>
-</table>
+	</table>
 </div>
 
 <br>

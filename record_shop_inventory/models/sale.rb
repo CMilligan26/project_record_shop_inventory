@@ -13,6 +13,7 @@ class Sale
     @record_id = options['record_id'].to_i
     @sale_quantity = options['sale_quantity'].to_i
     @overhead = options['overhead'].to_f
+    #Comment out if using spec
     @single_buying_cost = get_record_info.first.provide_buying_cost
     @single_selling_price = get_record_info.first.provide_selling_price
     @single_markup = get_record_info.first.provide_selling_price - get_record_info.first.provide_buying_cost
@@ -21,6 +22,7 @@ class Sale
     @total_selling_price = record_selling_price
     @total_markup = record_markup
     @total_profit = record_profit
+    #Comment out if using spec
   end
 
   def provide_record_id
@@ -140,9 +142,9 @@ class Sale
 
   def self.provide_previous_overhead
     sql = "SELECT sales.*
-FROM sales
-ORDER BY id DESC
-LIMIT 1"
+    FROM sales
+    ORDER BY id DESC
+    LIMIT 1"
     last_sale = Sale.map(SqlRunner.run(sql))
     if last_sale.first != nil
       return last_sale.first.overhead

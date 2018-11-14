@@ -10,7 +10,7 @@ class SaleTest < MiniTest::Test
   def setup
     label = Label.new({'id' => '1', 'name' => 'Test_Label', 'location' => 'Earth' })
     record = Record.new({'id' => '1', 'title' => 'Test_Record', 'artist' => 'Test_Artist', 'genre' => 'Test_Genre', 'description' => 'Test_Description', 'stock_quantity' => '3', 'buying_cost' => '10', 'selling_price' => '15', 'label_id' => label.id})
-    @sale = Sale.new({'id' => '1', 'record_id' => record.id, 'sale_quantity' => '2'})
+    @sale = Sale.new({'id' => '1', 'record_id' => record.id, 'sale_quantity' => '2', 'overhead' => "0.5"})
   end
 
   def test_sale_exists
@@ -27,6 +27,10 @@ class SaleTest < MiniTest::Test
 
   def test_sale_has_sale_quantity
     assert_equal(2, @sale.provide_sale_quantity)
+  end
+
+  def test_sale_has_overhead
+    assert_equal(0.5, @sale.overhead)
   end
 
 end

@@ -7,115 +7,115 @@
 <br>
 
 <div>
-<form action="/records/<%=@record.first.id%>" method="post">
+  <form action="/records/<%=@record.first.id%>" method="post">
 
-  <div>
-    <label for="label_name">Label:</label>
-    <select id="label_name" name="label_id">
-      <option value="<%= 'add_new' %>">Add New Label</option>
-      <% for label in @labels %>
-      <option value="<%= label.id %>" <%= 'selected' if @label.first.id == label.id %>><%= label.name %></option>
-      <% end %>
-    </select>
-  </div>
-
-  <br>
-
-  <div>
     <div>
-    <label class = "form_label" for="label_name">Label Name:</label>
-    <input class = "form_input" type="text" id="label_name" name="name" placeholder="Only for new label"/>
+      <label for="label_name">Label:</label>
+      <select id="label_name" name="label_id">
+        <option value="<%= 'add_new' %>">Add New Label</option>
+        <% for label in @labels %>
+        <option value="<%= label.id %>" <%= 'selected' if @label.first.id == label.id %>><%= label.name %></option>
+        <% end %>
+      </select>
     </div>
 
     <br>
 
     <div>
-    <label class = "form_label" for="location">Label Location:</label>
-    <input class = "form_input" type="text" id="location" name="location" placeholder="Only for new label"/>
-    </div>
-  </div>
+      <div>
+        <label class = "form_label" for="label_name">Label Name:</label>
+        <input class = "form_input" type="text" id="label_name" name="name" placeholder="Only for new label"/>
+      </div>
 
-<br>
+      <br>
 
-  <div>
-    <label for="record_title">Title:</label>
-    <input type="text" id="record_title" name="title" required minlength="1" value="<%= @record.first.title %>"/>
-  </div>
-
-  <br>
-
-  <div>
-    <label for="artist">Artist:</label>
-    <select id="artist" name="artist_id">
-      <option value="<%= 'add_new' %>">Add New Artist</option>
-      <% for artist in @artists %>
-      <option value="<%= artist.id %>" <%= 'selected' if @artist.first.id == artist.id %>><%= artist.artist_name %></option>
-      <% end %>
-    </select>
-  </div>
-
-  <br>
-
-  <div>
-    <label for="artist_name">Artist Name:</label>
-    <input type="text" id="artist_name" name="artist_name" placeholder="Only for new artist"/>
-  </div>
-
-<br>
-
-<div id="genre">
-  <label for="genre">Genre(s):</label>
-  <% hash_number = 0 %>
-  <% for genre in @all_genres %>
-  <input type="checkbox" name=<%="genres"+hash_number.to_s %> value="<%=genre.id%>"
-  <%= is_checked = 0
-  @genres.each{|record_genre| if record_genre.id == genre.id then is_checked += 1 end}
-  'checked' if is_checked == 1 %>> <%=genre.genre_name%>
-  <br>
-  <% hash_number += 1 %>
-  <% end %>
-</div>
-
-  <div>
-    <label for="genre_name">Genre Name:</label>
-    <input type="text" id="genre_name" name="genre_name" placeholder="Only for new genre"/>
-  </div>
-
-  <br>
-
-  <div>
-    <label for="record_release_date">Release Date:</label>
-    <input type="date" id="record_release_date" name="release_date" value="<%= @record.first.release_date %>"/>
-  </div>
-
-  <br>
-
-  <div>
-    <div>
-    <label for="record_buying_cost">Unit Price:</label>
-    <input type="number" id="record_buying_cost" name="buying_cost" step="0.01" min="1" max="1000" value="<%= @record.first.provide_buying_cost %>"/>
+      <div>
+        <label class = "form_label" for="location">Label Location:</label>
+        <input class = "form_input" type="text" id="location" name="location" placeholder="Only for new label"/>
+      </div>
     </div>
 
     <br>
 
     <div>
-    <label for="record_selling_price">Retail Price:</label>
-    <input type="number" id="record_selling_price" name="selling_price" step="0.01" min="1" max="1000" value="<%= @record.first.provide_selling_price %>"/>
+      <label for="record_title">Title:</label>
+      <input type="text" id="record_title" name="title" required minlength="1" value="<%= @record.first.title %>"/>
     </div>
-  </div>
 
-  <br>
+    <br>
 
-  <div>
-    <label for="artwork">Upload Album Artwork:</label>
-    <input type="file" id="artwork" name="file" accept="image/png, image/jpeg"/>
-  </div>
+    <div>
+      <label for="artist">Artist:</label>
+      <select id="artist" name="artist_id">
+        <option value="<%= 'add_new' %>">Add New Artist</option>
+        <% for artist in @artists %>
+        <option value="<%= artist.id %>" <%= 'selected' if @artist.first.id == artist.id %>><%= artist.artist_name %></option>
+        <% end %>
+      </select>
+    </div>
 
-  <br>
+    <br>
 
-  <div>
-    <button>Save Record</button>
-  </div>
+    <div>
+      <label for="artist_name">Artist Name:</label>
+      <input type="text" id="artist_name" name="artist_name" placeholder="Only for new artist"/>
+    </div>
 
-</form>
+    <br>
+
+    <div id="genre">
+      <label for="genre">Genre(s):</label>
+      <% hash_number = 0 %>
+      <% for genre in @all_genres %>
+      <input type="checkbox" name=<%="genres"+hash_number.to_s %> value="<%=genre.id%>"
+      <%= is_checked = 0
+      @genres.each{|record_genre| if record_genre.id == genre.id then is_checked += 1 end}
+      'checked' if is_checked == 1 %>> <%=genre.genre_name%>
+      <br>
+      <% hash_number += 1 %>
+      <% end %>
+    </div>
+
+    <div>
+      <label for="genre_name">Genre Name:</label>
+      <input type="text" id="genre_name" name="genre_name" placeholder="Only for new genre"/>
+    </div>
+
+    <br>
+
+    <div>
+      <label for="record_release_date">Release Date:</label>
+      <input type="date" id="record_release_date" name="release_date" value="<%= @record.first.release_date %>"/>
+    </div>
+
+    <br>
+
+    <div>
+      <div>
+        <label for="record_buying_cost">Unit Price:</label>
+        <input type="number" id="record_buying_cost" name="buying_cost" step="0.01" min="1" max="1000" value="<%= @record.first.provide_buying_cost %>"/>
+      </div>
+
+      <br>
+
+      <div>
+        <label for="record_selling_price">Retail Price:</label>
+        <input type="number" id="record_selling_price" name="selling_price" step="0.01" min="1" max="1000" value="<%= @record.first.provide_selling_price %>"/>
+      </div>
+    </div>
+
+    <br>
+
+    <div>
+      <label for="artwork">Upload Album Artwork:</label>
+      <input type="file" id="artwork" name="file" accept="image/png, image/jpeg"/>
+    </div>
+
+    <br>
+
+    <div>
+      <button>Save Record</button>
+    </div>
+
+  </form>
 </div>

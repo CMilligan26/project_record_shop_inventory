@@ -8,7 +8,7 @@ class Record
 
   attr_accessor :title, :file
 
-  attr_reader :id, :artist_id, :release_date, :label_id, :sold, :running_stock_total
+  attr_reader :id, :artist_id, :release_date, :label_id, :sold, :running_stock_total, :total_sold, :file
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
@@ -89,8 +89,8 @@ class Record
       sql = "SELECT * FROM records ORDER BY stock_quantity DESC"
     else
       sql = "SELECT records.*
-FROM records
-WHERE UPPER(title) LIKE '%#{sort.upcase}%'"
+      FROM records
+      WHERE UPPER(title) LIKE '%#{sort.upcase}%'"
     end
     Record.map(SqlRunner.run(sql))
   end

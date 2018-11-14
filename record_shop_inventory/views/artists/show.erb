@@ -8,17 +8,17 @@
 
 <div>
   <div>
-  <form action="/artists/<%= @artist.first.id %>/edit" method="get">
-    <input  type="submit" value="EDIT">
-  </form>
-  <div>
+    <form action="/artists/<%= @artist.first.id %>/edit" method="get">
+      <input  type="submit" value="EDIT">
+    </form>
+  </div>
 
   <br>
 
   <div>
-  <form action="/artists/<%= @artist.first.id %>/delete" method="post">
-    <input type="submit" value="DELETE">
-  </form>
+    <form action="/artists/<%= @artist.first.id %>/delete" method="post">
+      <input type="submit" value="DELETE">
+    </form>
   </div>
 
 </div>
@@ -26,45 +26,45 @@
 <br>
 
 <div>
-<table>
-	<thead>
-		<tr>
-			<th scope="col">Album Artwork</th>
-			<th scope="col">Title</th>
-			<th scope="col">Genre(s)</th>
-			<th scope="col">Release Date</th>
-			<th scope="col">Label</th>
-			<th scope="col">Stock</th>
-		</tr>
-	</thead>
-	<%@records.each do |record|%>
-	<tr>
-		<td><a href="/records/<%=record.id%>"><img class = "album_art" src="/images/album_art/<%=record.file%>" alt="Image of Vinyl"/></a></td>
-		<td><a href="/records/<%=record.id%>"><span><%=record.title%></span></a></td>
-		<td><%record.get_all_genres.each do |genre|%>
-		<a href="/genres/<%=genre.id%>"><span><%=genre.genre_name%></span></a>
-		<%end%>
-		</td>
-		<td><%=record.release_date%></td>
-		<td><a href="/labels/<%=record.label_id%>"><span><%=record.label.first.name%></span></a></td>
-		<%if record.provide_stock_quantity < 5%>
-		<td class = "bad_stock"><%=record.provide_stock_quantity%></td>
-		<%elsif record.provide_stock_quantity >= 10%>
-		<td class = "good_stock"><%=record.provide_stock_quantity%></td>
-		<%else%>
-		<td class = "ok_stock"><%=record.provide_stock_quantity%></td>
-		<%end%>
-		<td>
-		<form action="/records/<%= record.id %>/add_stock" method="get">
-		<input type="submit" value="ADD STOCK">
-		</form>
-		</td>
-		<td>
-		<form action="/sales/<%= record.id %>/new" method="get">
-		<input type="submit" value="ADD SALE">
-		</form>
-		</td>
-	</tr>
-	<%end%>
-</table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Album Artwork</th>
+        <th scope="col">Title</th>
+        <th scope="col">Genre(s)</th>
+        <th scope="col">Release Date</th>
+        <th scope="col">Label</th>
+        <th scope="col">Stock</th>
+      </tr>
+    </thead>
+    <%@records.each do |record|%>
+    <tr>
+      <td><a href="/records/<%=record.id%>"><img class = "album_art" src="/images/album_art/<%=record.file%>" alt="Image of Vinyl"/></a></td>
+      <td><a href="/records/<%=record.id%>"><span><%=record.title%></span></a></td>
+      <td><%record.get_all_genres.each do |genre|%>
+        <a href="/genres/<%=genre.id%>"><span><%=genre.genre_name%></span></a>
+        <%end%>
+      </td>
+      <td><%=record.release_date%></td>
+      <td><a href="/labels/<%=record.label_id%>"><span><%=record.label.first.name%></span></a></td>
+      <%if record.provide_stock_quantity < 5%>
+      <td class = "bad_stock"><%=record.provide_stock_quantity%></td>
+      <%elsif record.provide_stock_quantity >= 10%>
+      <td class = "good_stock"><%=record.provide_stock_quantity%></td>
+      <%else%>
+      <td class = "ok_stock"><%=record.provide_stock_quantity%></td>
+      <%end%>
+      <td>
+        <form action="/records/<%= record.id %>/add_stock" method="get">
+          <input type="submit" value="ADD STOCK">
+        </form>
+      </td>
+      <td>
+        <form action="/sales/<%= record.id %>/new" method="get">
+          <input type="submit" value="ADD SALE">
+        </form>
+      </td>
+    </tr>
+    <%end%>
+  </table>
 </div>

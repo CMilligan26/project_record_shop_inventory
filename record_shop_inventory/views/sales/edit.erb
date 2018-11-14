@@ -7,28 +7,28 @@
 <br>
 
 <div>
-<form action="/sales/<%=@sale.first.id%>" method="post">
+  <form action="/sales/<%=@sale.first.id%>" method="post">
 
-  <div>
-    <label for="record_title">Record:</label>
-    <select id="record_title" name="record_id">
-      <% for record in @records %>
-      <option value="<%= record.id %>" <%= 'selected' if @sale.first.record_id == record.id %>><%= record.title %></option>
-      <% end %>
-    </select>
-  </div>
+    <div>
+      <label for="record_title">Record:</label>
+      <select id="record_title" name="record_id">
+        <% for record in @records %>
+        <option value="<%= record.id %>" <%= 'selected' if @sale.first.record_id == record.id %>><%= record.title %></option>
+        <% end %>
+      </select>
+    </div>
 
-  <br>
+    <br>
 
-  <div>
-    <label for="sale_quantity">Sale Quantity:</label>
-    <input type="number" id="sale_quantity" name="sale_quantity" step="1" min="1" max="1000" value="<%= @sale.first.id %>" />
-  </div>
+    <div>
+      <label for="sale_quantity">Sale Quantity:</label>
+      <input type="number" id="sale_quantity" name="sale_quantity" step="1" min="1" max="1000" value="<%= @sale.first.id %>" />
+    </div>
 
-  <br>
+    <br>
 
-  <div>
-    <button>Save Sale</button>
-  </div>
-</form>
+    <div>
+      <button>Save Sale</button>
+    </div>
+  </form>
 </div>

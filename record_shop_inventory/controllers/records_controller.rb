@@ -96,7 +96,7 @@ post '/records/:id' do
     gc = GenreCategorization.new({'record_id' => params['id'], 'genre_id' => genre.id})
     gc.save
   end
-  
+
   old_record = Record.record(params['id'].to_i)
   params['stock_quantity'] = old_record.first.provide_stock_quantity
   record = Record.new(params)

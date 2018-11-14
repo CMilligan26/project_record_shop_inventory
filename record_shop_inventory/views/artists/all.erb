@@ -7,16 +7,16 @@
 <br>
 
 <div>
-<table>
-	<thead>
+	<table>
+		<thead>
+			<tr>
+				<th scope="col"> Name </th>
+			</tr>
+		</thead>
+		<%@artists.each do |artist|%>
 		<tr>
-			<th scope="col"> Name </th>
+			<td><a href="/artists/<%=artist.id%>"><span><%=artist.artist_name%></span></a></td>
 		</tr>
-	</thead>
-	<%@artists.each do |artist|%>
-	<tr>
-		<td><a href="/artists/<%=artist.id%>"><span><%=artist.artist_name%></span></a></td>
-	</tr>
-	<%end%>
-</table>
+		<%end%>
+	</table>
 </div>

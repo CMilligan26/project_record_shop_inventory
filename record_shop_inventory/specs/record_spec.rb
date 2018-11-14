@@ -47,6 +47,18 @@ class RecordTest < MiniTest::Test
     assert_equal(1, @record.label_id)
   end
 
+  def test_record_has_running_stock_total
+    assert_equal(3, @record.running_stock_total)
+  end
+
+  def test_record_has_total_sold
+    assert_equal(0, @record.total_sold)
+  end
+
+  def test_record_has_file
+    assert_equal("", @record.file)
+  end
+
   def test_record_markup
     assert_equal(5, @record.markup)
   end
