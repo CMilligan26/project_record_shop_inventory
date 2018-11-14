@@ -26,3 +26,7 @@ a:link, a:visited, a:active {
 a:hover {
   color: grey;
 }
+
+div {
+  display: block;
+}
