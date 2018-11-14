@@ -3,9 +3,9 @@ require( 'sinatra/contrib/all' )
 require_relative( '../models/label.rb' )
 also_reload( '../models/*' )
 
-get '/labels/all' do
+get '/labels/index' do
   @labels = Label.all
-  erb ( :"/labels/all" )
+  erb ( :"/labels/index" )
 end
 
 get '/labels/new' do

@@ -4,9 +4,9 @@ require( 'pry-byebug')
 require_relative( '../models/sale.rb' )
 also_reload( '../models/*' )
 
-get '/sales/all' do
+get '/sales/index' do
   @sales = Sale.all_sales_info
-  erb ( :"/sales/all" )
+  erb ( :"/sales/index" )
 end
 
 get '/sales/new' do

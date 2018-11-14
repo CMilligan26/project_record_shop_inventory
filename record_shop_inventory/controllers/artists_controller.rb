@@ -3,9 +3,9 @@ require( 'sinatra/contrib/all' )
 require_relative( '../models/artist.rb' )
 also_reload( '../models/*' )
 
-get '/artists/all' do
+get '/artists/index' do
   @artists = Artist.all
-  erb ( :"/artists/all" )
+  erb ( :"/artists/index" )
 end
 
 get '/artists/new' do

@@ -11,5 +11,5 @@ require('pry-byebug')
 
 get '/' do
   @records = Record.all(params['sort'])
-  erb ( :"index" )
+  erb ( :"main_index" )
 end

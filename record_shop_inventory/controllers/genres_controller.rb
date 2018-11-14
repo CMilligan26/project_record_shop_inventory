@@ -3,9 +3,9 @@ require( 'sinatra/contrib/all' )
 require_relative( '../models/genre.rb' )
 also_reload( '../models/*' )
 
-get '/genres/all' do
+get '/genres/index' do
   @genres = Genre.all
-  erb ( :"/genres/all" )
+  erb ( :"/genres/index" )
 end
 
 get '/genres/new' do
