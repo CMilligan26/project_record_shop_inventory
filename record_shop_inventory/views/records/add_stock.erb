@@ -1,18 +1,24 @@
 <a href="/"><span>Back to Inventory</span></a>
+
 <br>
 
 <h1> Add Stock for <%=@record.first.title%></h1>
 
-<form class = "new_form" action="/records/<%=@record.first.id%>/add_stock" method="post">
+<br>
 
-  <div class = "number_input">
-    <label class = "form_label" for="add_stock">Add Stock:</label>
-    <input class = "form_input" type="number" id="add_stock" name="add_stock" step="1" min="1" max="1000"/>
-    <br>
+<div>
+<form action="/records/<%=@record.first.id%>/add_stock" method="post">
+
+  <div>
+    <label for="add_stock">Add Stock:</label>
+    <input type="number" id="add_stock" name="add_stock" step="1" min="1" max="1000"/>
   </div>
 
-  <div class = "button_input">
+    <br>
+
+  <div>
     <button>Save</button>
   </div>
 
 </form>
+</div>

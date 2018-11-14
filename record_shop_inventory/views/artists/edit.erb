@@ -1,17 +1,24 @@
 <a href="/"><span>Back to Inventory</span></a>
+
 <br>
 
 <h1> Edit Artist </h1>
 
-<form class = "new_form" action="/artists/<%=@artist.first.id%>" method="post">
+<br>
 
-  <div class = "text_input">
-    <label class = "form_label" for="artist_name">Artist Name:</label>
-    <input class = "form_input" type="text" id="artist_name" name="artist_name" value="<%= @artist.first.artist_name %>" required minlength="1"/>
-    <br>
+<div>
+<form action="/artists/<%=@artist.first.id%>" method="post">
+
+  <div>
+    <label for="artist_name">Artist Name:</label>
+    <input type="text" id="artist_name" name="artist_name" value="<%= @artist.first.artist_name %>" required minlength="1"/>
   </div>
 
-  <div class = "button_input">
+  <br>
+
+  <div>
     <button>Save Artist</button>
   </div>
+
 </form>
+</div>

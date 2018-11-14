@@ -1,7 +1,12 @@
 <a href="/"><span>Back to Inventory</span></a>
+
 <br>
+
 <h1><%=@label.first.name%></h1>
 
+<br>
+
+<div>
 <table>
   <thead>
     <tr>
@@ -12,16 +17,28 @@
     <td><%=@label.first.location%></td>
   </tr>
 </table>
+</div>
 
-<div class="show_button_collection">
-  <form class="edit_button" action="/labels/<%= @label.first.id %>/edit" method="get">
+<br>
+
+<div>
+  <div>
+  <form action="/labels/<%= @label.first.id %>/edit" method="get">
     <input  type="submit" value="EDIT">
   </form>
-  <form class="delete_button" action="/labels/<%= @label.first.id %>/delete" method="post">
+  </div>
+
+  <br>
+
+  <div>
+  <form action="/labels/<%= @label.first.id %>/delete" method="post">
     <input type="submit" value="DELETE">
   </form>
+  </div>
+
+  <br>
+
   <div>
-    <br>
     <table>
     	<thead>
     		<tr>
@@ -51,15 +68,16 @@
     		<td class = "ok_stock"><%=record.provide_stock_quantity%></td>
     		<%end%>
     		<td>
-    		<form class="add_stock" action="/records/<%= record.id %>/add_stock" method="get">
+    		<form action="/records/<%= record.id %>/add_stock" method="get">
     		<input type="submit" value="ADD STOCK">
     		</form>
     		</td>
     		<td>
-    		<form class="add_stock" action="/sales/<%= record.id %>/new" method="get">
+    		<form action="/sales/<%= record.id %>/new" method="get">
     		<input type="submit" value="ADD SALE">
     		</form>
     		</td>
     	</tr>
     	<%end%>
     </table>
+</div>

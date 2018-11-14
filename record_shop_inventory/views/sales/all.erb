@@ -1,9 +1,12 @@
 <a href="/"><span>Back to Inventory</span></a>
+
 <br>
 
 <h1>Sales</h1>
 
 <br>
+
+<div>
 <table>
 	<thead>
 		<tr>
@@ -42,8 +45,11 @@
 	</tr>
 	<%end%>
 </table>
+</div>
+
 <br>
-<br>
+
+<div>
 <table>
 	<thead>
 		<tr>
@@ -60,5 +66,8 @@
 		<td>£<%= Sale.total_profit %></td>
 	</tr>
 </table>
+</div>
+
 <br>
-<a class = "sale_new" href="/sales/new"><span>Add New Sale</span></a>
+
+<a href="/sales/new"><span>Add New Sale</span></a>

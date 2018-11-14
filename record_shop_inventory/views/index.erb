@@ -1,30 +1,32 @@
 <h1>Inventory</h1>
 
-<div class = "all_links">
-	<a class = "sales_all" href="/sales/all"><span>View All Sales</span></a>
-	<a class = "labels_all" href="/labels/all"><span>View All Labels</span></a>
-	<a class = "artists_all" href="/artists/all"><span>View All Artists</span></a>
-	<a class = "genres_all" href="/genres/all"><span>View All Genres</span></a>
+<br>
+
+<div>
+	<a href="/sales/all"><span>View All Sales</span></a>
+	<a href="/labels/all"><span>View All Labels</span></a>
+	<a href="/artists/all"><span>View All Artists</span></a>
+	<a href="/genres/all"><span>View All Genres</span></a>
 </div>
 
 <br>
 
-<div class = "new_links">
-	<a class = "record_new" href="/records/new"><span>Add New Record</span></a>
-	<a class = "label_new" href="/labels/new"><span>Add New Label</span></a>
-	<a class = "sale_new" href="/sales/new"><span>Add New Sale</span></a>
-	<a class = "artist_new" href="/artists/new"><span>Add New Artist</span></a>
-	<a class = "genre_new" href="/genres/new"><span>Add New Genre</span></a>
+<div>
+	<a href="/records/new"><span>Add New Record</span></a>
+	<a href="/labels/new"><span>Add New Label</span></a>
+	<a href="/sales/new"><span>Add New Sale</span></a>
+	<a href="/artists/new"><span>Add New Artist</span></a>
+	<a href="/genres/new"><span>Add New Genre</span></a>
 </div>
 
 <br>
 
-<div class = "sort_index">
+<div>
 	<form action="/" method="get">
 
-		<div class = "select_input">
+		<div>
 		<label for="search">Search by Title:</label>
-    <input class = "form_input" type="text" id="search" name="sort"/>
+    <input type="text" id="search" name="sort"/>
 		</div>
 		<button>Sort</button>
 	</form>
@@ -32,10 +34,10 @@
 
 <br>
 
-<div class = "sort_index">
+<div>
 	<form action="/" method="get">
 
-		<div class = "select_input">
+		<div>
 			<label for="sort">Sort by:</label>
 			<select default = "" id="sort" name="sort">
 				<option style="display:none" disabled selected value> -- Choose Sort Method -- </option>
@@ -58,6 +60,7 @@
 
 <br>
 
+<div>
 <table>
 	<thead>
 		<tr>
@@ -89,15 +92,16 @@
 		<td class = "ok_stock"><%=record.provide_stock_quantity%></td>
 		<%end%>
 		<td>
-		<form class="add_stock" action="/records/<%= record.id %>/add_stock" method="get">
+		<form action="/records/<%= record.id %>/add_stock" method="get">
 		<input type="submit" value="ADD STOCK">
 		</form>
 		</td>
 		<td>
-		<form class="add_stock" action="/sales/<%= record.id %>/new" method="get">
+		<form action="/sales/<%= record.id %>/new" method="get">
 		<input type="submit" value="ADD SALE">
 		</form>
 		</td>
 	</tr>
 	<%end%>
 </table>
+</div>
