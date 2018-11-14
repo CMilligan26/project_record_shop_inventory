@@ -1,4 +1,31 @@
+.links {
+  padding-top: 10px;
+}
+
+.links a:link,.links a:visited,.links a:active  {
+  color: white;
+}
+
+.links,.links a:hover  {
+  color: black;
+}
+
 .index_link {
   padding-left: 10px;
   padding-right: 10px;
+  color: white;
+}
+
+.record_icon {
+  display: inline;
+  width: 40px;
+  height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  vertical-align: middle;
+}
+
+.inventory_title {
+  display: inline;
+  vertical-align: middle;
 }

@@ -3,6 +3,12 @@ html {
   box-sizing: border-box;
 }
 
+.header_image {
+  margin-bottom: 30px;
+  width: 500px;
+  height: 130px;
+}
+
 header {
   padding: none;
   margin: none;
@@ -11,11 +17,7 @@ header {
   height: 5vh;
   left: 0;
   top: 0;
-}
-
-.header_image {
-  width: 100%;
-  height: 100%;
+  background-color: grey;
 }
 
 footer {
@@ -26,6 +28,7 @@ footer {
   height: 5vh;
   left: 0;
   bottom: 0;
+  background-color: grey;
 }
 
 .footer_image {
@@ -48,8 +51,8 @@ body {
   height:auto;
   min-height: 100vh;
 
-  padding: 0px;
-  margin: 0px;
+  padding-top: 20px;
+  margin: 5vh 0px 0px 0px;
 
   font-family: sans-serif;
   color: black;
@@ -64,7 +67,12 @@ body {
 a:link, a:visited, a:active {
   color: black;
 }
-/*Change the link on mouse hover*/
+
 a:hover {
   color: grey;
+}
+
+.inventory_link {
+  margin-top: 20px;
+  padding-top: 20px;
 }

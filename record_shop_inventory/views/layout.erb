@@ -7,14 +7,15 @@
   <link rel="stylesheet" type="text/css" href="/styles/tables.css">
   <link rel="stylesheet" type="text/css" href="/styles/index.css">
   <link rel="stylesheet" type="text/css" href="/styles/album_art.css">
-  <img class = "header_image" src="/images/design/header_image.jpg" alt="Image of Vinyl"/>
-  <br>
-  <br>
-  <br>
-  <br>
+  <link rel="icon" href="/images/design/record_icon.jpg" />
 </head>
 <header>
-    <img class = "header_image" src="/images/design/header_image.jpg" alt="Image of Vinyl"/>
+  <div class = "links">
+  	<a class = "index_link" href="/sales/index"><span>View All Sales</span></a>
+  	<a class = "index_link" href="/labels/index"><span>View All Labels</span></a>
+  	<a class = "index_link" href="/artists/index"><span>View All Artists</span></a>
+  	<a class = "index_link" href="/genres/index"><span>View All Genres</span></a>
+  </div>
 </header>
 <body>
   <%= yield %>
@@ -22,6 +23,12 @@
 <br>
 <br>
 <footer>
-  <img class = "footer_image" src="/images/design/header_image.jpg" alt="Image of Vinyl"/>
+  <div class = "links">
+  	<a class = "index_link" href="/records/new"><span>Add New Record</span></a>
+  	<a class = "index_link" href="/sales/new"><span>Add New Sale</span></a>
+  	<a class = "index_link" href="/labels/new"><span>Add New Label</span></a>
+  	<a class = "index_link" href="/artists/new"><span>Add New Artist</span></a>
+  	<a class = "index_link" href="/genres/new"><span>Add New Genre</span></a>
+  </div>
 </footer>
 </html>
