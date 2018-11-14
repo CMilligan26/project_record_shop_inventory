@@ -31,7 +31,7 @@
     <td><%=@record.first.release_date%></td>
     <%if @record.first.provide_stock_quantity < 5%>
     <td class = "bad_stock"><%=@record.first.provide_stock_quantity%></td>
-    <%elsif record.provide_stock_quantity >= 10%>
+    <%elsif @record.first.provide_stock_quantity >= 10%>
     <td class = "good_stock"><%=@record.first.provide_stock_quantity%></td>
     <%else%>
     <td class = "ok_stock"><%=@record.first.provide_stock_quantity%></td>

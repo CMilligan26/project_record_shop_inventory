@@ -9,6 +9,10 @@ h1 {
   text-align: center;
 }
 
+div {
+  display: block;
+}
+
 body {
   font-family: sans-serif;
   background: white;
@@ -27,6 +31,9 @@ a:hover {
   color: grey;
 }
 
-div {
+.footer_image {
   display: block;
+  width: 100vw;
+  padding-top: 30px;
+  padding-bottom: 10px;
 }
