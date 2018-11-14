@@ -19,7 +19,7 @@ post '/sales/new' do
   if sale.save == false
     redirect to ("/sales/failed")
   else
-    redirect to ("/sales/all")
+    redirect to ("/sales/index")
   end
 end
 
@@ -30,7 +30,7 @@ post '/sales/:id' do
   if sale.update == false
     redirect to ("/sales/failed")
   else
-    redirect to ("/sales/all")
+    redirect to ("/sales/index")
   end
 end
 
@@ -43,7 +43,7 @@ end
 post '/sales/:id/delete' do
   sale = Sale.sale(params['id'].to_i)
   sale.first.delete
-  redirect to "/sales/all"
+  redirect to "/sales/index"
 end
 
 get '/sales/failed' do
@@ -60,6 +60,6 @@ post '/sales/:record_id/new' do
   if sale.save == false
     redirect to ("/sales/failed")
   else
-    redirect to ("/sales/all")
+    redirect to ("/sales/index")
   end
 end
