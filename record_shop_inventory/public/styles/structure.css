@@ -21,6 +21,8 @@ body {
   padding: 0px;
   margin: 0px;
   text-align: center;
+  background-image: url('../images/design/background.png');
+  background-color: white;
 }
 
 a:link, a:visited, a:active {
