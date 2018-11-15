@@ -1,6 +1,5 @@
 require( 'sinatra' )
 require( 'sinatra/contrib/all' )
-require( 'pry-byebug')
 require_relative( '../models/sale.rb' )
 also_reload( '../models/*' )
 

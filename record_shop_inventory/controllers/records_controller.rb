@@ -1,6 +1,5 @@
 require( 'sinatra' )
 require( 'sinatra/contrib/all' )
-require('pry-byebug')
 require_relative( '../models/record.rb' )
 require_relative( '../models/genre_categorization.rb' )
 also_reload( '../models/*' )

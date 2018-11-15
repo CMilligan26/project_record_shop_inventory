@@ -11,7 +11,7 @@
 <div>
   <div>
     <form action="/artists/<%= @artist.first.id %>/edit" method="get">
-      <input  type="submit" value="EDIT">
+      <input  type="submit" value="EDIT ARTIST">
     </form>
   </div>
 
@@ -19,12 +19,13 @@
 
   <div>
     <form action="/artists/<%= @artist.first.id %>/delete" method="post">
-      <input type="submit" value="DELETE">
+      <input type="submit" value="DELETE ARTIST">
     </form>
   </div>
 
 </div>
 
+<br>
 <br>
 
 <div>
@@ -41,7 +42,7 @@
     </thead>
     <%@records.each do |record|%>
     <tr>
-      <td><a href="/records/<%=record.id%>"><img class = "album_art" src="/images/album_art/<%=record.file%>" alt="Image of Vinyl"/></a></td>
+      <td><a href="/records/<%=record.id%>"><img class = "album_art" src="/images/album_art/<%=record.file%>" alt="<%=record.title%>"/></a></td>
       <td><a href="/records/<%=record.id%>"><span><%=record.title%></span></a></td>
       <td><%record.get_all_genres.each do |genre|%>
         <a href="/genres/<%=genre.id%>"><span><%=genre.genre_name%></span></a>

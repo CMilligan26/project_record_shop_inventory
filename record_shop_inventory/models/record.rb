@@ -2,7 +2,6 @@ require_relative( '../db/sql_runner' )
 require_relative('label')
 require_relative('artist')
 require_relative('genre')
-require('pry-byebug')
 
 class Record
 
