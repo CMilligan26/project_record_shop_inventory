@@ -140,7 +140,7 @@ record7 = Record.new({'title' => 'Year of the Snitch', 'artist_id' => artist7.id
 
 record8 = Record.new({'title' => 'In the Aeroplane Over the Sea', 'artist_id' => artist8.id, 'release_date' => '1998-02-10', 'stock_quantity' => '8', 'buying_cost' => '14', 'selling_price' => '21', 'label_id' => label8.id, 'file' => 'nmh-itaots.jpg'})
 
-record9 = Record.new({'title' => 'Selected Ambient Works 85–92', 'artist_id' => artist9.id, 'release_date' => '1992-02-12', 'stock_quantity' => '5', 'buying_cost' => '20', 'selling_price' => '30', 'label_id' => label9.id, 'file' => 'at-saw.jpg'})
+record9 = Record.new({'title' => 'Selected Ambient Works 85–92', 'artist_id' => artist9.id, 'release_date' => '1992-02-12', 'stock_quantity' => '5', 'buying_cost' => '20', 'selling_price' => '30', 'label_id' => label9.id, 'file' => 'at-saw.png'})
 
 record10 = Record.new({'title' => 'Loveless', 'artist_id' => artist10.id, 'release_date' => '1991-11-04', 'stock_quantity' => '2', 'buying_cost' => '80', 'selling_price' => '120', 'label_id' => label10.id, 'file' => 'mbv-l.jpg'})
 
