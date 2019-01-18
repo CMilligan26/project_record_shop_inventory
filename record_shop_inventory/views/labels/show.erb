@@ -56,7 +56,7 @@
     </thead>
     <%@records.each do |record|%>
     <tr>
-      <td><a href="/records/<%=record.id%>"><img class = "album_art" src="/images/album_art/<%=record.file%>" alt="<%=record.title%>"/></a></td>
+      <td><a href="/records/<%=record.id%>"><img class = "album_art" src="<%=record.file%>" alt="<%=record.title%>"/></a></td>
       <td><a href="/records/<%=record.id%>"><span><%=record.title%></span></a></td>
       <td><a href="/artists/<%=record.artist.first.id%>"><span><%=record.artist.first.artist_name%></span></a></td>
       <td><%record.get_all_genres.each do |genre|%>

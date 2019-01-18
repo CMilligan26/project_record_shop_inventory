@@ -47,6 +47,10 @@ class Record
     return @selling_price
   end
 
+  def provide_file
+    return @file
+  end
+
   def self.all(sort = nil)
     if sort == nil
       sql = "SELECT * FROM records"

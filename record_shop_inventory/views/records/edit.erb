@@ -109,8 +109,8 @@
     <br>
 
     <div>
-      <label for="artwork">Upload Album Artwork:</label>
-      <input type="file" id="artwork" name="file" accept="image/png, image/jpeg"/>
+      <label for="artwork">Album Artwork URL:</label>
+      <input type="text" id="artwork" name="file" required minlength="1" value="<%= @record.first.provide_file %>"/>
     </div>
 
     <br>

@@ -124,27 +124,27 @@ genre11.save
 
 #RECORDS
 
-record1 = Record.new({'title' => 'Music Has the Right to Children', 'artist_id' => artist1.id, 'release_date' => '1998-04-20', 'stock_quantity' => '10', 'buying_cost' => '20', 'selling_price' => '30', 'label_id' => label1.id, 'file' => 'boc-mhtrtc.jpg'})
+record1 = Record.new({'title' => 'Music Has the Right to Children', 'artist_id' => artist1.id, 'release_date' => '1998-04-20', 'stock_quantity' => '10', 'buying_cost' => '20', 'selling_price' => '30', 'label_id' => label1.id, 'file' => 'https://img.discogs.com/LzJ7u2lqvDRBGtqiiGWFe2BkHN8=/fit-in/300x300/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-11778-1475170215-9229.jpeg.jpg'})
 
-record2 = Record.new({'title' => 'Lost Horizons', 'artist_id' => artist2.id, 'release_date' => '2002-10-07', 'stock_quantity' => '1', 'buying_cost' => '50', 'selling_price' => '85', 'label_id' => label2.id, 'file' => 'lj-lh.jpg'})
+record2 = Record.new({'title' => 'Lost Horizons', 'artist_id' => artist2.id, 'release_date' => '2002-10-07', 'stock_quantity' => '1', 'buying_cost' => '50', 'selling_price' => '85', 'label_id' => label2.id, 'file' => 'https://cps-static.rovicorp.com/3/JPG_500/MI0000/372/MI0000372724.jpg?partner=allrovi.com'})
 
-record3 = Record.new({'title' => 'Mezzanine', 'artist_id' => artist3.id, 'release_date' => '1998-04-20', 'stock_quantity' => '3', 'buying_cost' => '15', 'selling_price' => '21', 'label_id' => label3.id, 'file' => 'ma-m.jpg'})
+record3 = Record.new({'title' => 'Mezzanine', 'artist_id' => artist3.id, 'release_date' => '1998-04-20', 'stock_quantity' => '3', 'buying_cost' => '15', 'selling_price' => '21', 'label_id' => label3.id, 'file' => 'https://images-na.ssl-images-amazon.com/images/I/71mFt4ktPZL._SX355_.jpg'})
 
-record4 = Record.new({'title' => 'Black Sands', 'artist_id' => artist4.id, 'release_date' => '2010-03-29', 'stock_quantity' => '2', 'buying_cost' => '18', 'selling_price' => '25', 'label_id' => label4.id, 'file' => 'b-bs.jpg'})
+record4 = Record.new({'title' => 'Black Sands', 'artist_id' => artist4.id, 'release_date' => '2010-03-29', 'stock_quantity' => '2', 'buying_cost' => '18', 'selling_price' => '25', 'label_id' => label4.id, 'file' => 'https://images-na.ssl-images-amazon.com/images/I/81JesaNAP7L._SY355_.jpg'})
 
-record5 = Record.new({'title' => 'Since I Left You', 'artist_id' => artist5.id, 'release_date' => '2000-11-27', 'stock_quantity' => '2', 'buying_cost' => '25', 'selling_price' => '35', 'label_id' => label5.id, 'file' => 'ta-sily.jpg'})
+record5 = Record.new({'title' => 'Since I Left You', 'artist_id' => artist5.id, 'release_date' => '2000-11-27', 'stock_quantity' => '2', 'buying_cost' => '25', 'selling_price' => '35', 'label_id' => label5.id, 'file' => 'https://static.spin.com/files/2016/07/avalanches-since-i-left-you1-640x640.jpg'})
 
-record6 = Record.new({'title' => 'Mana Pool', 'artist_id' => artist6.id, 'release_date' => '2014-06-02', 'stock_quantity' => '5', 'buying_cost' => '17', 'selling_price' => '30', 'label_id' => label6.id, 'file' => 'v-mp.jpg'})
+record6 = Record.new({'title' => 'Mana Pool', 'artist_id' => artist6.id, 'release_date' => '2014-06-02', 'stock_quantity' => '5', 'buying_cost' => '17', 'selling_price' => '30', 'label_id' => label6.id, 'file' => 'https://f4.bcbits.com/img/a3009056645_16.jpg'})
 
-record7 = Record.new({'title' => 'Year of the Snitch', 'artist_id' => artist7.id, 'release_date' => '2018-06-22', 'stock_quantity' => '3', 'buying_cost' => '20', 'selling_price' => '30', 'label_id' => label7.id, 'file' => 'dg-yots.jpg'})
+record7 = Record.new({'title' => 'Year of the Snitch', 'artist_id' => artist7.id, 'release_date' => '2018-06-22', 'stock_quantity' => '3', 'buying_cost' => '20', 'selling_price' => '30', 'label_id' => label7.id, 'file' => 'https://i.kym-cdn.com/photos/images/original/001/359/425/d92.jpg'})
 
-record8 = Record.new({'title' => 'In the Aeroplane Over the Sea', 'artist_id' => artist8.id, 'release_date' => '1998-02-10', 'stock_quantity' => '8', 'buying_cost' => '14', 'selling_price' => '21', 'label_id' => label8.id, 'file' => 'nmh-itaots.jpg'})
+record8 = Record.new({'title' => 'In the Aeroplane Over the Sea', 'artist_id' => artist8.id, 'release_date' => '1998-02-10', 'stock_quantity' => '8', 'buying_cost' => '14', 'selling_price' => '21', 'label_id' => label8.id, 'file' => 'https://i.scdn.co/image/4bd59c0b2ef97a9225600b4d5d5e7b45395ed9ad'})
 
-record9 = Record.new({'title' => 'Selected Ambient Works 85–92', 'artist_id' => artist9.id, 'release_date' => '1992-02-12', 'stock_quantity' => '5', 'buying_cost' => '20', 'selling_price' => '30', 'label_id' => label9.id, 'file' => 'at-saw.png'})
+record9 = Record.new({'title' => 'Selected Ambient Works 85–92', 'artist_id' => artist9.id, 'release_date' => '1992-02-12', 'stock_quantity' => '5', 'buying_cost' => '20', 'selling_price' => '30', 'label_id' => label9.id, 'file' => 'https://img.discogs.com/2ovqXhO78mJBYEdvKW-2tVjJRYE=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-32662-1221896955.jpeg.jpg'})
 
-record10 = Record.new({'title' => 'Loveless', 'artist_id' => artist10.id, 'release_date' => '1991-11-04', 'stock_quantity' => '2', 'buying_cost' => '80', 'selling_price' => '120', 'label_id' => label10.id, 'file' => 'mbv-l.jpg'})
+record10 = Record.new({'title' => 'Loveless', 'artist_id' => artist10.id, 'release_date' => '1991-11-04', 'stock_quantity' => '2', 'buying_cost' => '80', 'selling_price' => '120', 'label_id' => label10.id, 'file' => 'https://ksassets.timeincuk.net/wp/uploads/sites/55/2012/08/18.Mybloodyvalentine_lovelss_161013-1.jpg'})
 
-record11 = Record.new({'title' => 'Painting With', 'artist_id' => artist11.id, 'release_date' => '2016-02-19', 'stock_quantity' => '16', 'buying_cost' => '12', 'selling_price' => '18', 'label_id' => label11.id, 'file' => 'ac-pw.jpg'})
+record11 = Record.new({'title' => 'Painting With', 'artist_id' => artist11.id, 'release_date' => '2016-02-19', 'stock_quantity' => '16', 'buying_cost' => '12', 'selling_price' => '18', 'label_id' => label11.id, 'file' => 'https://thelpcafe.com/wp-content/uploads/2017/11/painting-with-animal-collective-1.png'})
 
 record1.save
 record2.save

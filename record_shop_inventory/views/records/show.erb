@@ -24,7 +24,7 @@
       </tr>
     </thead>
     <tr>
-      <td><img class = "album_art" src="/images/album_art/<%=@record.first.file%>" alt="<%=@record.first.title%>"/></td>
+      <td><img class = "album_art" src="<%=@record.first.file%>" alt="<%=@record.first.title%>"/></td>
       <td><a href="/artists/<%=@record.first.artist.first.id%>"><span><%=@record.first.artist.first.artist_name%></span></a></td>
       <td><%@record.first.get_all_genres.each do |genre|%>
         <a href="/genres/<%=genre.id%>"><span><%=genre.genre_name%></span></a>
