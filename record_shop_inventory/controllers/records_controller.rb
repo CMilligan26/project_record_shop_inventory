@@ -1,8 +1,7 @@
 require( 'sinatra' )
-require( 'sinatra/contrib/all' )
+require('sinatra/contrib/all') if development?
 require_relative( '../models/record.rb' )
 require_relative( '../models/genre_categorization.rb' )
-also_reload( '../models/*' )
 
 get '/records/new' do
   @records = Record.all

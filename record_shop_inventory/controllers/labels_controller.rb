@@ -1,7 +1,6 @@
 require( 'sinatra' )
-require( 'sinatra/contrib/all' )
+require('sinatra/contrib/all') if development?
 require_relative( '../models/label.rb' )
-also_reload( '../models/*' )
 
 get '/labels/index' do
   @labels = Label.all

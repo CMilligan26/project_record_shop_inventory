@@ -1,7 +1,6 @@
 require( 'sinatra' )
-require( 'sinatra/contrib/all' )
+require('sinatra/contrib/all') if development?
 require_relative( '../models/sale.rb' )
-also_reload( '../models/*' )
 
 get '/sales/index' do
   @sales = Sale.all_sales_info

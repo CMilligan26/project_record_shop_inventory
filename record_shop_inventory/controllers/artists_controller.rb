@@ -1,7 +1,6 @@
 require( 'sinatra' )
-require( 'sinatra/contrib/all' )
+require('sinatra/contrib/all') if development?
 require_relative( '../models/artist.rb' )
-also_reload( '../models/*' )
 
 get '/artists/index' do
   @artists = Artist.all
